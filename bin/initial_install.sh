@@ -45,7 +45,7 @@ esac
 
 pushd /tmp
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
-nix --experimental-features "nix-command flakes" run github:nix-community:disko -- -- mode disko /tmp/copycat/disko.git '"/dev/'${DISK_DEV}'"'
+nix --experimental-features "nix-command flakes" run github:nix-community:disko -- --mode disko /tmp/copycat/disko.git '"/dev/'${DISK_DEV}'"'
 
 nixos-generate-config --no-filesystems --root /mnt
 
