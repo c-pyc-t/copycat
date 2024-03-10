@@ -20,7 +20,10 @@ set -e
 
 PHASE=""
 
+echo "dollar1 is: $1"
 [[ $1 == "" ]] && PHASE="base"
+echo "dollarphase is: $PHASE"
+
 
 case $PHASE in
 	base) echo "Installing copycat:base" ;;
