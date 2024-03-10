@@ -62,9 +62,9 @@ rm configuration.nix
 pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 pushd /mnt/etc/nixos
-cp _origin-version.nix hardware-configuration.nix /mnt/base
-cp _origin-version.nix hardware-configuration.nix /mnt/live
-cp _origin-version.nix hardware-configuration.nix /mnt/perennial
+cp _origin-version.nix hardware-configuration.nix /mnt/copycat/base
+cp _origin-version.nix hardware-configuration.nix /mnt/copycat/perennial
+cp _origin-version.nix hardware-configuration.nix /mnt/copycat/live
 
 nixos-install --flake /copycat/${PHASE}#default
 
