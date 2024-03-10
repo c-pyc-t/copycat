@@ -1,4 +1,0 @@
-# system-configuration.nix
-# @niceguy
-{
-}
