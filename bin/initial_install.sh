@@ -66,7 +66,7 @@ cp _origin-version.nix hardware-configuration.nix /mnt/copycat/base
 cp _origin-version.nix hardware-configuration.nix /mnt/copycat/perennial
 cp _origin-version.nix hardware-configuration.nix /mnt/copycat/live
 
-nixos-install --flake /copycat/${PHASE}#default
+nixos-install --flake /mnt/copycat/${PHASE}#default
 
 # mkdir -p /mnt/copycat/base
 # pushd /mnt/copycat/base
