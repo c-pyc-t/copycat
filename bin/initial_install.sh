@@ -52,6 +52,7 @@ nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
 
 mkdir /tmp/meow
+nixos-generate-config --no-filesystems --root /mnt # do we just need files to exist in /mnt/etc/nixos
 nixos-generate-config --no-filesystems --root /mnt --dir /tmp/meow
 
 pushd /tmp/meow
