@@ -59,14 +59,15 @@ echo "}" >> _origin-version.nix
 #rm configuration.nix
 
 
-pushd /mnt/copycat
+mkdir /tmp/tst
+pushd /tmp/tst
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 pushd /mnt/etc/nixos
-cp _origin-version.nix hardware-configuration.nix /mnt/copycat/base
-cp _origin-version.nix hardware-configuration.nix /mnt/copycat/perennial
-cp _origin-version.nix hardware-configuration.nix /mnt/copycat/live
+cp _origin-version.nix hardware-configuration.nix /tmp/tst/base
+cp _origin-version.nix hardware-configuration.nix /tmp/tst/perennial
+cp _origin-version.nix hardware-configuration.nix /tmp/tst/live
 
-nixos-install --flake /mnt/copycat/${PHASE}#default
+nixos-install --flake /tmp/tst/${PHASE}#default
 
 # mkdir -p /mnt/copycat/base
 # pushd /mnt/copycat/base
