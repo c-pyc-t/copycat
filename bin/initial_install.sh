@@ -55,12 +55,12 @@ echo "#WARNING: DO NOT TOUCH ./_origin-version.nix UNLESS ABSOLUTELY CERTAIN YOU
 echo "{" >> _origin-version.nix
 cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
 echo "}" >> _origin-version.nix
-#sed -i "s/"Have you read the  _origin-version.nix
+#sed -i "s/Did you read the comment?/Yes, I read the comment - but I should always double check the documentation! :)" _origin-version.nix
 rm configuration.nix
 
 
 pushd /mnt/copycat
-nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git" .
+nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 pushd /mnt/etc/nixos
 cp _origin-version.nix hardware-configuration.nix /mnt/base
 cp _origin-version.nix hardware-configuration.nix /mnt/live
