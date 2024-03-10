@@ -20,10 +20,7 @@ set -e
 
 PHASE=""
 
-echo "dollar1 is: $1"
 [[ $1 == "" ]] && PHASE="base"
-echo "dollarphase is: $PHASE"
-
 
 case $PHASE in
 	base) echo "Installing copycat:base" ;;
@@ -48,7 +45,7 @@ esac
 
 pushd /tmp
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
-nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/${PHASE}/disko.git --arg device '"/dev/'${DISK_DEV}'"'
+nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/${PHASE}/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
 
 nixos-generate-config --no-filesystems --root /mnt
 
