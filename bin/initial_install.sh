@@ -45,30 +45,31 @@ esac
 
 pushd /tmp
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
-nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/${PHASE}/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
+# rm -rf /tmp/copycat/.git # needed because install freaks if you have a git dir
+# mkdir /tmp/hw
+# cp /tmp/copycat/${PHASE}/disko.nix /tmp/hw
 
-nixos-generate-config --no-filesystems --root /mnt
+nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
 
-pushd /mnt/etc/nixos
+mkdir /tmp/meow
+nixos-generate-config --no-filesystems --root /mnt --dir /tmp/meow
+
+pushd /tmp/meow
 
 echo "#WARNING: DO NOT TOUCH ./_origin-version.nix UNLESS ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING" > _origin-version.nix
 echo "{" >> _origin-version.nix
 cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
 echo "}" >> _origin-version.nix
-cp /tmp/copycat/base/disko.nix . 
 # sed -i "s/Did you read the comment?/Yes, I read the comment - but I should always double check the documentation! :)" _origin-version.nix
-#rm configuration.nix
+rm configuration.nix
 
+cp /tmp/copycat/${PHASE}/*.nix .
+
+nixos-install --flake /mnt/copycat/${PHASE}#default
 
 pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
-pushd /mnt/etc/nixos
 
-cp _origin-version.nix disko.nix hardware-configuration.nix /mnt/copycat/base
-cp _origin-version.nix disko.nix hardware-configuration.nix /mnt/copycat/perennial
-cp _origin-version.nix disko.nix hardware-configuration.nix /mnt/copycat/live
-
-nixos-install --flake /mnt/copycat/${PHASE}#default
 
 # mkdir -p /mnt/copycat/base
 # pushd /mnt/copycat/base
