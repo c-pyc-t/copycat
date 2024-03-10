@@ -65,7 +65,7 @@ rm configuration.nix
 
 cp /tmp/copycat/${PHASE}/*.nix .
 
-nixos-install --flake /mnt/copycat/${PHASE}#default
+nixos-install --flake /tmp/meow#default
 
 pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
