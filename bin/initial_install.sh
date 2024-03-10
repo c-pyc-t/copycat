@@ -55,19 +55,20 @@ echo "#WARNING: DO NOT TOUCH ./_origin-version.nix UNLESS ABSOLUTELY CERTAIN YOU
 echo "{" >> _origin-version.nix
 cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
 echo "}" >> _origin-version.nix
+cp /tmp/copycat/base/disko.nix . 
 # sed -i "s/Did you read the comment?/Yes, I read the comment - but I should always double check the documentation! :)" _origin-version.nix
 #rm configuration.nix
 
 
-mkdir /tmp/tst
-pushd /tmp/tst
+pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 pushd /mnt/etc/nixos
-cp _origin-version.nix hardware-configuration.nix /tmp/tst/base
-cp _origin-version.nix hardware-configuration.nix /tmp/tst/perennial
-cp _origin-version.nix hardware-configuration.nix /tmp/tst/live
 
-nixos-install --flake /tmp/tst/${PHASE}#default
+cp _origin-version.nix disko.nix hardware-configuration.nix /mnt/copycat/base
+cp _origin-version.nix disko.nix hardware-configuration.nix /mnt/copycat/perennial
+cp _origin-version.nix disko.nix hardware-configuration.nix /mnt/copycat/live
+
+nixos-install --flake /mnt/copycat/${PHASE}#default
 
 # mkdir -p /mnt/copycat/base
 # pushd /mnt/copycat/base
