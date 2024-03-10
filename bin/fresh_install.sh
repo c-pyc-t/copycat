@@ -46,11 +46,14 @@ esac
 pushd /tmp
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
+popd +1
 
 nixos-generate-config --no-filesystems --root /mnt # do we just need files to exist in /mnt/etc/nixos?
 
+pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
-nixos-generate-config --no-filesystems --root /mnt --dir /copycat/base
+nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base
+popd +1 
 
 pushd /mnt/copycat/base
 
@@ -62,6 +65,8 @@ echo "}" >> _origin-version.nix
 mv /mnt/copycat/.git /tmp/ccgit 
 nixos-install --flake /mnt/copycat#live
 mv /tmp/ccgit /mnt/copycat/.git
+
+popd +1
 
 
 # mkdir -p /mnt/copycat/base
