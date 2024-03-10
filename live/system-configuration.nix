@@ -27,7 +27,7 @@
 		boot.loader.grub.enable = true;
 		boot.loader.grub.device = "nodev";
 		boot.loader.grub.efiSupport = true;
-		boot.loader.grub.efiInstallAsremovable = true;
+		boot.loader.grub.efiInstallAsRemovable = true;
 		# generationsDir /copy kernels etc looks interesting for the way we want our generations to work
 
 
