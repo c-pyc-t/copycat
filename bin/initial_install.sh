@@ -20,7 +20,7 @@ set -e
 
 PHASE=""
 
-[[ $1 == "" ]] && PHASE="base"
+[[ $1 == "" ]] && PHASE="live"
 
 case $PHASE in
 	base) echo "Installing copycat:base" ;;
