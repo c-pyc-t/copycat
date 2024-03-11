@@ -3,20 +3,21 @@
 set -e 
 
 pushd /copycat
-GIT_SSH_COMMAND="ssh -i /copycat/keys/system/ssh.key" git
+FORCE_KEY="-c core.sshCommand=ssh -i /copycat/keys/system/ssh.key"
 
 M_ID=$(cat /etc/machine-id)
 ACTIVE_CONF=$(cat active-config)
-BRANCH="copycat@${ACTIVE_CONF}@${M_ID"
+BRANCH="copycat#${ACTIVE_CONF}@${M_ID}"
 
-${GIT_SSH_COMMAND} branch ${BRANCH} 2>/dev/null
-${GIT_SSH_COMMAND} checkout ${BRANCH}
+git $FORCE_KEY branch ${BRANCH} 2>/dev/null
+git $FORCE_KEY checkout ${BRANCH}
 
 GENS=$(nixos-rebuild list-generations)
 G_HEAD=$(cat ${GENS} | head -n 1)
 GEN=$(cat ${GENS} | grep current)
-${GIT_SSH_COMMAND} commit --allow-empty -am "${BRANCH}\n${G_HEAD}\n${GEN}\n\n.mew\n"
 
-${GIT_SSH_COMMAND} push --set-upstream origin ${BRANCH}
+git $FORCE_KEY commit --allow-empty -am "${BRANCH}\n${G_HEAD}\n${GEN}\n\n.mew\n"
+
+git $FORCE_KEY push --set-upstream origin ${BRANCH}
 
 read -p "i wonder if i can do this here lol"
