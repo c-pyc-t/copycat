@@ -62,9 +62,14 @@ echo "{" >> _origin-version.nix
 cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
 echo "}" >> _origin-version.nix
 
-mv /mnt/copycat/.git /tmp/ccgit 
-nixos-install --flake /mnt/copycat#live
-mv /tmp/ccgit /mnt/copycat/.git
+pushd /mnt/etc/nixos
+cp /mnt/copycat/base/*.nix .
+cp /mnt/copycat/live/*.nix .
+
+sed -i 's/\.\/base//g' *.nix
+#mv /mnt/copycat/.git /tmp/ccgit 
+nixos-install --flake /mnt/etc/nixos#default
+#mv /tmp/ccgit /mnt/copycat/.git
 
 popd +1
 
