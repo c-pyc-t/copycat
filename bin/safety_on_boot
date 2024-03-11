@@ -20,4 +20,6 @@ git $FORCE_KEY commit --allow-empty -am "${BRANCH}\n${G_HEAD}\n${GEN}\n\n.mew\n"
 
 git $FORCE_KEY push --set-upstream origin ${BRANCH}
 
+git checkout main
+
 read -p "i wonder if i can do this here lol"
