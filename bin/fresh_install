@@ -46,6 +46,8 @@ esac
 
 pushd /tmp
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
+pushd /tmp/copycat/base
+
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
 popd +1 1&2>/dev/nill
 
