@@ -103,10 +103,7 @@ ssh-keygen -f ./ssh.key -t ed25519 -b 4096 -N '' -C "copycat@copycat@copycat"
 # AGE GENERATION
 nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -o age.key
 
-echo "# age.pub" > /tmp/pubs
-echo "" >> /tmp/pubs
-nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -y age.key >> /tmp/pubs
-echo "# ssh.pub" >> /tmp/pubs
+echo "# copycat ssh.pub" >> /tmp/pubs
 cat ssh.key.pub >> /tmp/pubs
 
 # this prints a public version to stdout (we pipe to termbin because boss)
