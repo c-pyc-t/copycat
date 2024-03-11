@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e 
+
+pushd /copycat
+
+M_ID=$(cat /etc/machine-id)
+ACTIVE_CONF=$(cat active-config)
+BRANCH="copycat@${ACTIVE_CONF}@${M_ID"
+
+git branch ${BRANCH} 2>/dev/null
+git checkout ${BRANCH}
+
+GENS=$(nixos-rebuild list-generations)
+G_HEAD=$(cat ${GENS} | head -n 1)
+GEN=$(cat ${GENS} | grep current)
+git commit --allow-empty -am "
+${BRANCH}
+
+${G_HEAD}
+${GEN}
+
+.mew
+"
+
+
+git push --set-upstream origin ${BRANCH}
+
+
+
+
+read -p "i wonder if i can do this here lol"
