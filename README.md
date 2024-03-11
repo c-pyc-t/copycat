@@ -1,7 +1,5 @@
-# nixos#copycat
-# @niceguy
-#
-# WARNING:
-#   this is straight dirty, dangerous and destructive
-# 
-# USE AT YOUR OWN DISCRETION
+# copycat
+@niceguy
+## WARNING: this is straight dirty, dangerous and destructive
+## USE AT YOUR OWN DISCRETION
+... why would you? just don't.
