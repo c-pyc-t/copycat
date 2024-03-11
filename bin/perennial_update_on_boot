@@ -1,0 +1,10 @@
+#!/bin/bash
+
+M_ID=$(cat /etc/machine-id)
+BRANCH=${M_ID}
+pushd /copycat
+git branch copycat@${M_ID}
+git checkout 
+
+
+read -p "i wonder if i can do this here lol"

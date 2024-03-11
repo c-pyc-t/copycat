@@ -18,16 +18,6 @@
 #
 set -e
 
-PHASE=""
-
-[[ $1 == "" ]] && PHASE="live"
-
-case $PHASE in
-        base) echo "Installing copycat:base" ;;
-        perennial) echo "Installing copycat:perennial" ;;
-        live) echo "Installing copycat:live" ;;
-        *) echo "cant figure out wtf you want to do" && exit 1 ;;
-esac
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
@@ -75,9 +65,9 @@ echo "}" >> _origin-version.nix
 
 pushd /mnt/etc/nixos
 cp /mnt/copycat/base/*.nix .
-cp /mnt/copycat/live/*.nix .
+cp /mnt/copycat/*.nix .
 
-sed -i 's/\.\/base//g' *.nix
+sed -i 's/\.\/base/./g' *.nix
 nixos-install --flake /mnt/etc/nixos#default
 popd +1
 

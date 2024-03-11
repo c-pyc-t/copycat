@@ -58,8 +58,8 @@
 		[
 			# --v-- ./flake.nix --v--
 			# -+v+- ./configuration.nix -+v+- 
-			../base/_origin-version.nix
-			../base/hardware-configuration.nix
+			./base/_origin-version.nix
+			./base/hardware-configuration.nix
 			# -+^+- ./configuration.nix -+^+-
 			# ...
 		];
