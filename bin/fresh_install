@@ -43,16 +43,27 @@ case $CHOICE in
   *) exit 1 ;;
 esac
 
+
+echo "How much swap? [32GiB]: "
+read SWAP_SIZE
+[[ $SWAP_SIZE == "" ]] && SWAP_SIZE="32GiB";
+echo "[$SWAP_SIZE] ... is this correct?"
+read -n1 -r -p " to confirm [y|enter] : " CHOICE
+case $CHOICE in
+  y|Y|"") echo "" ;;
+  *) exit 1 ;;
+esac
+
 pushd /tmp
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
-popd +1
+popd +1 1&2>/dev/nill
 
-nixos-generate-config --no-filesystems --root /mnt # do we just need files to exist in /mnt/etc/nixos?
+nixos-generate-config --no-filesystems --root /mnt # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
 
 pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
-nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base
+nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base # dumb we need two copies  
 popd +1 
 
 pushd /mnt/copycat/base
@@ -108,11 +119,14 @@ cat ssh.key.pub >> /tmp/pubs
 
 # this prints a public version to stdout (we pipe to termbin because boss)
 echo ""
+echo ""
+echo ""
 echo "-v- generating link ... -v-"
 cat /tmp/pubs | nc termbin.com 9999
-popd +1
-
 echo "-^- your systems PUBLIC SSH key should be in the link above -^-"
+echo ""
+echo ""
+echo ""
 echo "NOTE: age.key AND the 'public' key shouldn't leave my system "
 echo "      the public age key is to act like a canary."
 echo "			currently it doesn't, but it will give me an optional"
@@ -120,5 +134,7 @@ echo "      extra layer of security should i want to implement it "
 echo "      in the future, and doesn't change the basic functionality"
 echo "      aka win/win ..."
 echo "  @niceguy"
-read -p "Press any key to reboot <C-c>-c-c-caaancel" && reboot
+echo ""
+echo    "Press any key to reboot..."
+read -p "     <C-c>-c-c-to-caaancel" && reboot
 

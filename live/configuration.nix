@@ -182,6 +182,34 @@
 		users.defaultUserShell = pkgs.fish;
 
 
+		# SERVICES 
+		# We want to backup our last known bootable configuration, that's the perennial directory.
+		# We would also like our actual repo to update automatically.
+		# I think it's probably a good idea if i actually continue with my current workflow
+		# 
+		# current workflow is:
+		#		edit -> push -> *reinstall
+		# 
+		# instead i just want to leave it at push and have my whole machine try to automatically 
+		# update from git periodically!
+		# 
+		# we can even have this automatically switch, cozy and comfy that not only if our current 
+		# configuration breaks, we have the nixos generations to cover us 
+		# and if for some unknown to me at the time of writing reason, that fails, it will be 
+		# possible to make it automatically repair itself completely.
+		# 
+		systemd.services.copycatLastKnownBootable = {
+			wantedBy = [ "multi-user.target" ];
+			after = [ "network.target" ];
+			description = "Hits the git one time with a commit";
+			serviceConfig ={
+				WorkingDirectory = "/copycat" ;
+				Type = "oneshot";
+				ExecStart = ''${pkgs.screen}/bin/git '';
+			};
+		};
+
+
 		# When you can add things with programs.PROGRAM - as there seems to be more support with the way it ties in
 		environment.systemPackages = with pkgs; [
 			vim
@@ -196,6 +224,7 @@
 			age
 			sops
 		];
+
 
 
 		# USER SETUP
