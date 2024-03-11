@@ -90,12 +90,12 @@ popd +1
 mkdir -p /copycat/keys/system
 pushd /copycat/keys/system
 
-ssh-keygen -f /copycat/keys/system/ssh.key -t rsa -b 4096 -N ''
+ssh-keygen -f /copycat/keys/system/ssh.key -t rsa -b 4096 -N '' -C "copycat"
 
 nix run nixpkgs#ssh-to-age -- -private-key -i /copycat/keys/system/ssh.key > /copycat/keys/system/age.key
 
 echo "# age.pub" > /tmp/pubs
-nix shell nixpkgs#age -c age-keygen -o /copycat/keys/system/age.key >> /tmp/pubs
+nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -o /copycat/keys/system/age.key >> /tmp/pubs
 echo "" >> /tmp/pubs
 echo "# ssh.pub" >> /tmp/pubs
 cat ssh.pub >> /tmp/pubs
@@ -103,9 +103,6 @@ cat ssh.pub >> /tmp/pubs
 # this prints a public version to stdout (we pipe to termbin because boss)
 cat /tmp/pubs | nc termbin.com 9999
 
-read -p "your systems PUBLIC SSH and AGE keys should be in the link above"
-
-
-
-
+echo "your systems PUBLIC SSH and AGE keys should be in the link above"
+read -p "Press any key to reboot <C-c>-c-c-caaancel" && reboot
 
