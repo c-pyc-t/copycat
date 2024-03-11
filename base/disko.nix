@@ -73,11 +73,14 @@
 									mountpoint = "/copycat";
 								};
 								"/static" = {
-									mountOptions = [ "subvol=persist" "noatime" ];
+									mountOptions = [ "subvol=persist" "noatime" "compress=lzo" ]; # lzo compression - worst compression best speed
 									mountpoint = "/static";
 								};
 								"/nix" = {
-									mountOptions = [ "subvol=nix" "noatime" ];
+									mountOptions = [ "subvol=nix" "noatime" "compress=lzo" ]; 
+									# default compression is zlib which has the highest compresison ratio
+									# might be worth swapping /nix /root to zlib/lzo depending on experience down the line
+									# favouring speed for the outset configuration 
 									mountpoint = "/nix";
 								};
 							};

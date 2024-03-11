@@ -152,7 +152,6 @@
 			"d /copycat/base 744 copycat root"
 			"d /copycat/perennial 744 copycat root"
 			"d /copycat/live 775 copycat copycat"
-			"f /copycat/*.nix 775 copycat copycat"
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
 #			EXAMPLES: 
@@ -173,6 +172,8 @@
 
 		programs.hyprland.enable = true;
 #		programs.hyprland.package = inputs.hyprland.package."${pkgs.system}".hyprland; # apparently this is better but it doesnt work for me yet? typo?
+		
+		# dunno if i actually like fish ... use it for longer
 		programs.fish.enable = true;
 		users.defaultUserShell = pkgs.fish;
 
@@ -180,8 +181,14 @@
 		# When you can add things with programs.PROGRAM - as there seems to be more support with the way it ties in
 		environment.systemPackages = with pkgs; [
 			vim
+			neovim
 			git
+			lazygit
 			home-manager
+			kitty
+			dunst
+			wofi
+			qutebrowser
 		];
 
 
@@ -198,7 +205,8 @@
 		};
 		
 		users.users.copycat = {
-			isNormalUser = false;
+			isSystemUser = true;
+			group = "copycat";
 			extraGroups = [ "copycat" ];
 		};
 }
