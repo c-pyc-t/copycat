@@ -23,10 +23,6 @@ ${GEN}
 .mew
 "
 
-
 git push --set-upstream origin ${BRANCH}
-
-
-
 
 read -p "i wonder if i can do this here lol"

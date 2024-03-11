@@ -205,7 +205,7 @@
 			serviceConfig ={
 				WorkingDirectory = "/copycat" ;
 				Type = "oneshot";
-				ExecStart = ''${pkgs.screen}/bin/git '';
+				ExecStart = "/copycat/bin/safety_on_boot";
 			};
 		};
 
