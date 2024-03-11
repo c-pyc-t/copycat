@@ -87,23 +87,41 @@ popd +1
 # fetching the correct things but i can step in to adjust things if needed unlike most other
 # authentication methods where a bunch of unknown shit happens... 
 #
-mkdir -p /copycat/keys/system
-pushd /copycat/keys/system
+mkdir -p /mnt/copycat/keys/system
+pushd /mnt/copycat/keys/system
 
-ssh-keygen -f ./ssh.key -t rsa -b 4096 -N '' -C "copycat@copycat@copycat"
+ssh-keygen -f ./ssh.key -t ed25519 -b 4096 -N '' -C "copycat@copycat@copycat"
 
-nix --experimental-features "nix-command flakes" run nixpkgs#ssh-to-age -- -private-key -i ./ssh.key > ./age.key
-nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -y ./age.key > ./age.pub
+# while possible to just simply generate the age.key from ssh.key, that being deterministic
+# gives me the heebies - i think ill just keep a unique age key for unlocking 'local' or internal-to-me
+# systems
+
+# SSH -> AGE way [defunct for my purposes]
+# nix --experimental-features "nix-command flakes" run nixpkgs#ssh-to-age -- -private-key -i ./ssh.key > ./age.key
+# nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -y ./age.key > ./age.key.pub
+
+# AGE GENERATION
+nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -o age.key
 
 echo "# age.pub" > /tmp/pubs
 echo "" >> /tmp/pubs
+nix --experimental-features "nix-command flakes" shel lnixpkgs#age -c age-keygen -y age.key >> /tmp/pubs
 echo "# ssh.pub" >> /tmp/pubs
-cat ssh.pub >> /tmp/pubs
+cat ssh.key.pub >> /tmp/pubs
 
 # this prints a public version to stdout (we pipe to termbin because boss)
+echo ""
+echo "-v- generating link ... -v-"
 cat /tmp/pubs | nc termbin.com 9999
 popd +1
 
-echo "your systems PUBLIC SSH and AGE keys should be in the link above"
+echo "-^- your systems PUBLIC SSH key should be in the link above -^-"
+echo "NOTE: age.key AND the 'public' key shouldn't leave my system "
+echo "      the public age key is to act like a canary."
+echo "			currently it doesn't, but it will give me an optional"
+echo "      extra layer of security should i want to implement it "
+echo "      in the future, and doesn't change the basic functionality"
+echo "      aka win/win ..."
+echo "  @niceguy"
 read -p "Press any key to reboot <C-c>-c-c-caaancel" && reboot
 
