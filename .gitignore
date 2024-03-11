@@ -1,3 +1,5 @@
 _origin-version.nix
 flake.lock
 hardware-configuration.nix
+ssh
+.sshcopycat
