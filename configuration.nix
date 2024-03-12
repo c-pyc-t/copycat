@@ -74,17 +74,15 @@
 		# test this now ...
 
 		# systemd
-		# boot.loader.systemd-boot.enable = true;
-		#	boot.loader.efi.canTouchEfiVariables = true;
-		# boot.loader.systemd-boot.memtest86.enable = true;
+		boot.loader.systemd-boot.enable = true;
+		boot.loader.efi.canTouchEfiVariables = true;
+		boot.loader.systemd-boot.memtest86.enable = true;
 
 		# grub
-#		boot.loader.systemd-boot.enable = false;
-		boot.loader.grub.enable = true;
-		boot.loader.grub.device = "nodev";
-		boot.loader.grub.efiSupport = true;
-		boot.loader.grub.efiInstallAsRemovable = true;
-		# generationsDir /copy kernels etc looks interesting for the way we want our generations to work
+		# boot.loader.grub.enable = true;
+		# boot.loader.grub.device = "nodev";
+		# boot.loader.grub.efiSupport = true;
+		# boot.loader.grub.efiInstallAsRemovable = true;
 
 
 		# KERNEL
@@ -211,7 +209,7 @@
 		# and if for some unknown to me at the time of writing reason, that fails, it will be 
 		# possible to make it automatically repair itself completely.
 		# 
-		systemd.services.copycatLastKnownBootable = {
+		systemd.services.copycatSafetyCommit = {
 			wantedBy = [ "multi-user.target" ];
 			after = [ "network.target" ];
 			description = "Hits the git one time with a one time commit. .mew";
