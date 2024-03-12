@@ -60,7 +60,7 @@ nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos # do we 
 
 pushd /mnt/copycat/base
 
-sed -i "s/nvme0n1/$DISK_DEV/g" flake.nix
+sed -i "s/nvme0n1/$DISK_DEV/g" disk-device.nix
 
 echo "#WARNING: DO NOT TOUCH ./_origin-version.nix UNLESS ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING" > _origin-version.nix
 echo "{" >> _origin-version.nix
@@ -68,8 +68,7 @@ cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
 echo "}" >> _origin-version.nix
 
 pushd /mnt/copycat
-cp *.nix /mnt/etc/nixos
-cp base/*.nix /mnt/etc/nixos
+cp *.nix base/*.nix /mnt/etc/nixos
 
 pushd /mnt/etc/nixos
 sed -i 's/\.\/base/./g' *.nix
