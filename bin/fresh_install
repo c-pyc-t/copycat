@@ -54,7 +54,7 @@ popd +1 1&2>/dev/nill
 nixos-generate-config --no-filesystems --root /mnt # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
 
 pushd /mnt/copycat
-nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
+nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base # dumb we need two copies  
 popd +1 
 
