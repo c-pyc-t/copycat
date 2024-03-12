@@ -54,7 +54,7 @@ popd +1 1&2>/dev/nill
 nixos-generate-config --no-filesystems --root /mnt # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
 
 pushd /mnt/copycat
-nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
+nix-shell -p git --run "git clone git@github.com:nice-0/copycat.git ."
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base # dumb we need two copies  
 popd +1 
 
@@ -90,8 +90,8 @@ popd +1
 # fetching the correct things but i can step in to adjust things if needed unlike most other
 # authentication methods where a bunch of unknown shit happens... 
 #
-mkdir -p /mnt/copycat/keys/system
-pushd /mnt/copycat/keys/system
+mkdir -p /mnt/copycat/keys
+pushd /mnt/copycat/keys
 
 ssh-keygen -f ./ssh.key -t ed25519 -b 4096 -N '' -C "copycat@copycat@copycat"
 
@@ -106,7 +106,7 @@ ssh-keygen -f ./ssh.key -t ed25519 -b 4096 -N '' -C "copycat@copycat@copycat"
 # AGE GENERATION
 nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -o age.key
 
-echo "# copycat ssh.pub" >> /tmp/pubs
+echo "# copycat ssh.key.pub" >> /tmp/pubs
 cat ssh.key.pub >> /tmp/pubs
 
 # this prints a public version to stdout (we pipe to termbin because boss)

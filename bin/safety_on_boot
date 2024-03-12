@@ -3,22 +3,29 @@
 set -e 
 
 pushd /copycat
-FORCE_KEY="-c core.sshCommand=ssh -i /copycat/keys/system/ssh.key"
+git config core.sshCommand "ssh -i /copycat/keys/ssh.key"
+git config user.name "c-pyc-at"
+git config user.email "copycat@imp.nz"
 
 M_ID=$(cat /etc/machine-id)
-ACTIVE_CONF=$(cat active-config)
+ACTIVE_CONF=$(cat .active)
 BRANCH="copycat#${ACTIVE_CONF}@${M_ID}"
 
-git $FORCE_KEY branch ${BRANCH} 2>/dev/null
-git $FORCE_KEY checkout ${BRANCH}
+git branch ${BRANCH} 2>/dev/null
+git checkout ${BRANCH}
 
 GENS=$(nixos-rebuild list-generations)
 G_HEAD=$(cat ${GENS} | head -n 1)
 GEN=$(cat ${GENS} | grep current)
 
-git $FORCE_KEY commit --allow-empty -am "${BRANCH}\n${G_HEAD}\n${GEN}\n\n.mew\n"
+git commit --allow-empty -am "${BRANCH}
 
-git $FORCE_KEY push --set-upstream origin ${BRANCH}
+${G_HEAD}
+${GEN}
+
+.mew"
+
+git push --set-upstream origin \"${BRANCH}\"
 
 git checkout main
 
