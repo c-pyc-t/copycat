@@ -99,7 +99,7 @@ ssh-keygen -f ./ssh.key -t ed25519 -b 4096 -N '' -C "copycat@copycat@copycat"
 
 # while possible to just simply generate the age.key from ssh.key, that being deterministic
 # gives me the heebies - i think ill just keep a unique age key for unlocking 'local' or internal-to-me
-# systems
+# systems.
 
 # SSH -> AGE way [defunct for my purposes]
 # nix --experimental-features "nix-command flakes" run nixpkgs#ssh-to-age -- -private-key -i ./ssh.key > ./age.key
