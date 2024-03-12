@@ -201,11 +201,11 @@
 		systemd.services.copycatLastKnownBootable = {
 			wantedBy = [ "multi-user.target" ];
 			after = [ "network.target" ];
-			description = "Hits the git one time with a commit";
+			description = "Hits the git one time with a one time commit. .mew";
 			serviceConfig ={
 				WorkingDirectory = "/copycat" ;
 				Type = "oneshot";
-				ExecStart = "/copycat/bin/safety_on_boot";
+				ExecStart = "/copycat/bin/safety_on_boot.sh";
 			};
 		};
 
