@@ -15,8 +15,8 @@ git branch ${BRANCH} 2>/dev/null
 git checkout ${BRANCH}
 
 GENS=$(nixos-rebuild list-generations)
-G_HEAD=$(cat ${GENS} | head -n 1)
-GEN=$(cat ${GENS} | grep current)
+G_HEAD=$(nixos-rebuild list-generations | head -n 1)
+GEN=$(nixos-rebuild list-generations | grep current)
 
 git commit --allow-empty -am "${BRANCH}
 
