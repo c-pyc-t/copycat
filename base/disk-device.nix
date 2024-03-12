@@ -1,3 +1,3 @@
 {
-	(import ../disko.nix { device = "/dev/nvme0n1"; )
+	(import ./disko.nix { device = "/dev/nvme0n1"; )
 }
