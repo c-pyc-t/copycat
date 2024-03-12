@@ -35,7 +35,7 @@
       specialArgs = {inherit inputs;};
       modules = [
 				(import ./base/_origin-version.nix)
-				(impport ./base/hardware-configuration.nix)
+				(import ./base/hardware-configuration.nix)
 
         inputs.disko.nixosModules.default
         (import ./base/disko_device.nix)
