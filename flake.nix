@@ -38,7 +38,7 @@
 				(import ./base/hardware-configuration.nix)
 
         inputs.disko.nixosModules.default
-        (import ./base/disko-device.nix)
+        (import ./base/disk-device.nix)
 
         ./default.nix #default
       ];
