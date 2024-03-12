@@ -54,23 +54,22 @@ nix --experimental-features "nix-command flakes" run github:nix-community/disko 
 
 pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
-nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base # dumb we need two copies  
+nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base
 
-nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
+#nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
 
 pushd /mnt/copycat/base
+
+sed -i "s/nvme0n1/$DISK_DEV/g" flake.nix
 
 echo "#WARNING: DO NOT TOUCH ./_origin-version.nix UNLESS ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING" > _origin-version.nix
 echo "{" >> _origin-version.nix
 cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
 echo "}" >> _origin-version.nix
 
-pushd /mnt/etc/nixos
-cp /mnt/copycat/base/*.nix .
-cp /mnt/copycat/*.nix .
-
-sed -i 's/\.\/base/./g' *.nix
-nixos-install --flake /mnt/etc/nixos#default
+pushd /mnt/copycat
+#sed -i 's/\.\/base/./g' *.nix
+nixos-install --flake /mnt/copycat#default
 
 ### 
 # setup keys/secret/password shit
