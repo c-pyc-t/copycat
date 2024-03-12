@@ -56,7 +56,7 @@ pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base
 
-#nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
+nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
 
 pushd /mnt/copycat/base
 
