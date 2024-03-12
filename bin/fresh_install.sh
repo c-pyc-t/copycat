@@ -68,10 +68,11 @@ cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
 echo "}" >> _origin-version.nix
 
 pushd /mnt/copycat
-#sed -i 's/\.\/base/./g' *.nix
 cp *.nix /mnt/etc/nixos
 cp base/*.nix /mnt/etc/nixos
 
+pushd /mnt/etc/nixos
+sed -i 's/\.\/base/./g' *.nix
 nixos-install --flake /mnt/etc/nixos#default
 
 ### 
