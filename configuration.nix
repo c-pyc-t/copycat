@@ -168,13 +168,7 @@
 			"d /static 755 root users ~7d"	# holds data within /static for 7d, will NOT remove files/directories immediately inside
 			"d /static/u 755 root users"
 			"d /copycat 775 root copycat"  # this will be where our actual system configuration will live in perpetuity
-			"H /copycat/* 775 copycat copycat"
-			"d /copycat/base 744 copycat root"
-			"H /copycat/base/* 744 copycat copycat"
-			"d /copycat/perennial 744 copycat root"
-			"H /copycat/perennial/* 744 copycat root"
-			"d /copycat/live 775 copycat copycat"
-			"H /copycat/live/* 775 copycat copycat" # redundant but adding anyway
+			# "H /copycat/* 775 copycat copycat"
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
 #			EXAMPLES: 

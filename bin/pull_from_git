@@ -1,6 +1,0 @@
-#!/bin/bash
-
-set -e
-pushd /copycat
-git clone https://github.com/nice-0/copycat.git .
-popd +1

@@ -1,18 +1,18 @@
 #!/bin/bash
 
-set -e 
 
 pushd /copycat
-git config core.sshCommand "ssh -i /copycat/keys/ssh.key"
+git config core.sshCommand "ssh -i /copycat/keys/ssh.key -o \"StrictHostKeyChecking accept-new\""
 git config user.name "c-pyc-at"
 git config user.email "copycat@imp.nz"
-git remote set-url origin "git@github.com/nice-0/copycat.git"
+git remote set-url origin "git@github.com:nice-0/copycat.git"
 
 M_ID=$(cat /etc/machine-id)
 ACTIVE_CONF=$(cat .active)
 BRANCH="copycat#${ACTIVE_CONF}@${M_ID}"
 
 git branch "$BRANCH" 2>/dev/null
+set -e 
 git checkout "$BRANCH"
 
 GENS=$(nixos-rebuild list-generations)
@@ -29,5 +29,3 @@ $GEN
 git push --set-upstream origin "$BRANCH"
 
 git checkout main
-
-read -p "i wonder if i can do this here lol"
