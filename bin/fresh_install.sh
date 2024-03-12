@@ -69,7 +69,10 @@ echo "}" >> _origin-version.nix
 
 pushd /mnt/copycat
 #sed -i 's/\.\/base/./g' *.nix
-nixos-install --flake /mnt/copycat#default
+cp *.nix /mnt/etc/nixos
+cp base/*.nix /mnt/etc/nixos
+
+nixos-install --flake /mnt/etc/nixos#default
 
 ### 
 # setup keys/secret/password shit
