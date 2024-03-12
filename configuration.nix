@@ -217,7 +217,7 @@
 				WorkingDirectory = "/copycat" ;
 				Type = "oneshot";
 				path = [ pkgs.git ];
-				ExecStart = "sh /copycat/bin/safety_on_boot.sh";
+				script = "${/copycat/bin/safety_on_boot.sh}"; 
 			};
 		};
 
