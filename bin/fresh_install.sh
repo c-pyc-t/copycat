@@ -51,12 +51,10 @@ pushd /tmp/copycat/base
 sed -i "s/32GiB/$SWAP_SIZE/g" disko.nix
 
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
-popd +1 1&2>/dev/nill
 
 pushd /mnt/copycat
 nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base # dumb we need two copies  
-popd +1 
 
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
 
@@ -73,8 +71,6 @@ cp /mnt/copycat/*.nix .
 
 sed -i 's/\.\/base/./g' *.nix
 nixos-install --flake /mnt/etc/nixos#default
-popd +1
-
 
 ### 
 # setup keys/secret/password shit
