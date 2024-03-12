@@ -30,7 +30,7 @@
 	
 	outputs = {nixpkgs, ...} @ inputs:
   {
-		# DEFAULT
+		# DEFAULT: # nixos-rebuild switch --flake /copycat#default
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
