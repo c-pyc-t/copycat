@@ -114,7 +114,7 @@ echo "Swap Size: $SWAP_SIZE"
 
 echo "Beginning ..."
 echo "Setting swap size ..." && sed -i "s/32GiB/$SWAP_SIZE/g" /tmp/copycat/base/disko.nix
-echo "Setting up disk ..." && nix-shell -p disko --mode disko /tmp/copycat/base/disko.nix --arg device \"${DISK_DEV}\"
+echo "Setting up disk ..." && nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device \"${DISK_DEV}\"
 
 #
 # pushd /tmp
