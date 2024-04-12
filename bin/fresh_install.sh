@@ -17,7 +17,6 @@
 #
 set -e
 
-SKIP_DISK=true
 
 DEST_DEV=""
 SWAP_SIZE=""
@@ -54,7 +53,7 @@ psak
 
 ## DISK HEAD
 ## COPY IN TOTAL - WE NEED TO DO SOME ANNOYING CONDITIONALS
-if [[ ! -d '/mnt/copycat' && ! $SKIP_DISK ]]; then
+if [[ ! -d '/mnt/copycat' ]]; then
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
