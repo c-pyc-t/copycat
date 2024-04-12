@@ -128,8 +128,7 @@ nix --experimental-features "nix-command flakes" run github:nix-community/disko 
 	nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
 
 else
-	mkdir /mnt/copycat > /dev/null
-	cd /mnt/copycat
+	pushd /mnt/copycat
   nix-shell -p git --run "git stash"
 	nix-shell -p git --run "git pull"
 	rm -rf cfg/local_origin
