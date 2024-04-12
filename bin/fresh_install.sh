@@ -145,27 +145,9 @@ echo "{" > version.nix
 cat configuration.nix | grep "system.stateVersion" >> version.nix
 echo "}" >> version.nix
 
-# pushd /mnt/copycat
-# nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
-# nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base
-#
-# nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos # do we just need to build agains files in /mnt/etc/nixos? seems arbitrary...
-#
-# pushd /mnt/copycat/base
-#
-# sed -i "s/nvme0n1/$DISK_DEV/g" disk-device.nix
-#
-# echo "#WARNING: DO NOT TOUCH ./_origin-version.nix UNLESS ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING" > _origin-version.nix
-# echo "{" >> _origin-version.nix
-# cat configuration.nix | grep "system.stateVersion" >> _origin-version.nix
-# echo "}" >> _origin-version.nix
-#
-# pushd /mnt/copycat
-# cp *.nix base/*.nix /mnt/etc/nixos
-#
-# pushd /mnt/etc/nixos
-# sed -i 's/\.\/base/./g' *.nix
-# nixos-install --flake /mnt/etc/nixos#default
+nixos-install --flake /mnt/copycat/cfg#default
+
+
 #
 # ### 
 # # setup keys/secret/password shit
