@@ -122,6 +122,11 @@ nix-shell -p git --run "git clone https://github.com/c-pyc-t/copycat.git /mnt/co
 
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
 
+pushd /mnt/copycat/cfg/local_origin > /dev/null
+
+echo "{" > version.nix
+cat configuration.nix | grep "system.stateVersion" >> version.nix
+echo "}" >> version.nix
 
 # pushd /mnt/copycat
 # nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."

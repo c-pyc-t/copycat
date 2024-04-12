@@ -1,4 +1,4 @@
-_origin-version.nix
+local_origin
 flake.lock
 hardware-configuration.nix
 keys
