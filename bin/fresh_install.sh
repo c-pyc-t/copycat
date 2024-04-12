@@ -69,7 +69,7 @@ while ( ! $CONTINUE ); do
 	do
 		case $OCE in
 			ok )			[[ $CONTINUE ]] && break												;; 
-			change )	CONTINUE=false && read -p "value: " VAR; break	;;
+			change )	CONTINUE=false && read -p "value: " QVAR; break	;;
 			escape )  exit 1																					;;
 		esac
 	done
