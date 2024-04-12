@@ -29,25 +29,42 @@ alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
 #
 
 
-echo "testing t q f"
-
-select tqf in "true" "que" "false";
-do
-	case $tqf in
-		true ) echo "yea bro"  ;;
-		false ) echo "nah bro" ;;
-		que ) echo "wtf?"      ;; 
-	esac
-
-done
-
-echo how far behind are you? 1
 psak
 
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
+
+
+
+QVAR="nvme0n1"
+CONTINUE=false
+while ( ! $CONTINUE ); do 
+	select OCE in "ok" "change" "escape";
+	do
+		case $OCE in
+			ok )			CONTINUE=true								;; 
+			change )	read "value: " VAR					;;
+			escape )  exit 1											;;
+		esac
+done
+
+# echo "testing t q f"
+
+# select tqf in "true" "que" "false";
+# do
+#	 case $tqf in
+# 		true ) echo "yea bro"  ;;
+# 		false ) echo "nah bro" ;;
+# 		que ) echo "wtf?"      ;; 
+# 	esac
+# done
+
+
+
+
+
 
 echo "Enter your device name [nvme0n1]: "
 #EXISTS=0
