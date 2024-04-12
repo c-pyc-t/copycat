@@ -17,7 +17,7 @@
 #
 set -e
 
-SKIP_DISK=true
+SKIP_DISK=false
 
 DEST_DEV=""
 SWAP_SIZE=""
