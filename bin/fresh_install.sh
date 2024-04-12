@@ -147,8 +147,12 @@ echo "}" >> version.nix
 
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
-nixos-install --root /mnt --flake /mnt/copycat/cfg#default
+nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
 
+
+####
+# nix shell --extra-experimental-features "nix-command flakes" nixpkgs#git
+####
 
 #
 # ### 

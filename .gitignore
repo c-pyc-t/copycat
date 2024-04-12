@@ -1,4 +1,3 @@
 local_origin
-flake.lock
 hardware-configuration.nix
 keys
