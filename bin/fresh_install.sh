@@ -27,18 +27,30 @@ psak
 #        No ) exit;;
 #    esac
 #done
+#
 
 
-echo "seriously update wtf"
+echo "testing t q f"
+
+select tqf in "true" "que" "false";
+do
+	case $tqf in
+		true ) echo "yea bro"  ;;
+		false ) echo "nah bro" ;;
+		que ) echo "wtf?"      ;; 
+	esac
+
+done
+
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
 
 echo "Enter your device name [nvme0n1]: "
-EXISTS=0
+#EXISTS=0
 
-while [[ ! $EXISTS ]]; then
+#while [[ ! $EXISTS ]]; then
 	read DISK_DEV
 	[[ $DISK_DEV == "" ]] && DISK_DEV="nvme0n1";
 	echo "[/dev/$DISK_DEV] ... is this correct?"
