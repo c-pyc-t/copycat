@@ -47,7 +47,6 @@ psak
 #
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
-clear
 
 echo ""
 echo ""
