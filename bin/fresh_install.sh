@@ -79,7 +79,7 @@ while ( ! $CONTINUE ); do
 		esac
 	done
 done
-DEST_DEV=$QVAR
+DEST_DEV="/dev/$QVAR"
 unset QVAR
 unset CONTINUE
 
@@ -112,8 +112,9 @@ psak
 echo "Device: $DISK_DEV"
 echo "Swap Size: $SWAP_SIZE"
 
-echo "Beginning..."
-echo "Setting swap..." && sed -i "s/32GiB/$SWAP_SIZE/g" /tmp/copycat/base/disko.nix
+echo "Beginning ..."
+echo "Setting swap size ..." && sed -i "s/32GiB/$SWAP_SIZE/g" /tmp/copycat/base/disko.nix
+echo "Setting up disk ..." && nix-shell -p disko --mode disko /tmp/copycat/base/disko.nix --arg device \"${DISK_DEV}\"
 
 #
 # pushd /tmp
