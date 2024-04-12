@@ -44,7 +44,7 @@ while ( ! $CONTINUE ); do
 	select OCE in "ok" "change" "escape";
 	do
 		case $OCE in
-			ok )			CONTINUE=true								;; 
+			ok )			CONTINUE=true; break				;; 
 			change )	read "value: " VAR					;;
 			escape )  exit 1											;;
 		esac
