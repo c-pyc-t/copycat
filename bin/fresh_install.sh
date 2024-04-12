@@ -145,7 +145,9 @@ echo "{" > version.nix
 cat configuration.nix | grep "system.stateVersion" >> version.nix
 echo "}" >> version.nix
 
-nixos-install --flake /mnt/copycat/cfg#default
+nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos
+nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
+nixos-install --root /mnt --flake /mnt/copycat/cfg#default
 
 
 #

@@ -1,5 +1,5 @@
 # configuration.nix
-# @niceguy
+# @drgn
 # auto-last-edit-date-here-would-be-swell-templates-could-be-useful-you-lazy-fuck
 # unsure how flake.nix really works - but it seems that it comes before the config file - disk config is there.
 #
@@ -10,7 +10,7 @@
 # 
 # good place for a home directory, no?
 # 
-# thus: /static/u/niceguy
+# thus: /static/u/drgn
 #   = /static/ (data) -> u/ (users) -> name (name of user)
 #
 # along the same line of thinking, using btrfs labels, id like to keep my entire system configuration isolated 
@@ -170,9 +170,9 @@
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
 #			EXAMPLES: 
-#			"d /static/testing 755 niceguy users 30s" # 30second hold time for testing - could be some interesting applications to this...
-#			"d /static/data 755 niceguy users"
-#			"d /static/transient 777 niceguy users 1d" # conceptually use this for downloading rando source for compliation and testing etc
+#			"d /static/testing 755 drgn users 30s" # 30second hold time for testing - could be some interesting applications to this...
+#			"d /static/data 755 drgn users"
+#			"d /static/transient 777 drgn users 1d" # conceptually use this for downloading rando source for compliation and testing etc
 
 		# SYSTEM PACKAGES
 		# Allow unfree packages 
@@ -241,9 +241,9 @@
 
 
 		# USER SETUP
-		users.users."niceguy" = {
+		users.users."drgn" = {
 			isNormalUser = true;
-			home = "/static/u/niceguy"; # make absolutely sure not to have a trailing slash on HOME dirs
+			home = "/static/u/drgn"; # make absolutely sure not to have a trailing slash on HOME dirs
 			description = "I'm a bad girl, but a good story where I go. I've nothing in my pockets but everything to show.";
 			shell = pkgs.fish;
 			initialPassword = ''\'';
