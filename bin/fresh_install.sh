@@ -58,13 +58,19 @@ psak
 QVAR="nvme0n1"
 CONTINUE=false
 while ( ! $CONTINUE ); do 
-	echo "$QVAR ?"
+	if [[ -e "/dev/$QVAR" ]]; then
+		echo "destination device: /dev/$QVAR"
+		CONTINUE=true
+	else
+		echo "unrecognised device please enter /dev/\"trgtdev\""
+	fi
+
 	select OCE in "ok" "change" "escape";
 	do
 		case $OCE in
-			ok )			CONTINUE=true; break				 ;; 
-			change )	read -p "value: " VAR; break ;;
-			escape )  exit 1											 ;;
+			ok )			[[ $CONTINUE ]] && break												;; 
+			change )	CONTINUE=false && read -p "value: " VAR; break	;;
+			escape )  exit 1																					;;
 		esac
 	done
 done
