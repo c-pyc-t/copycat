@@ -17,6 +17,7 @@
 #
 set -e
 
+SKIP_DISK=true
 
 DEST_DEV=""
 SWAP_SIZE=""
@@ -49,6 +50,11 @@ psak
 #    esac
 #done
 #
+
+
+## DISK HEAD
+## COPY IN TOTAL - WE NEED TO DO SOME ANNOYING CONDITIONALS
+if [[ ! $SKIP_DISK ]]; then
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
@@ -113,14 +119,24 @@ echo "Device: $DISK_DEV"
 echo "Swap Size: $SWAP_SIZE"
 
 echo "Beginning ..."
-echo "Setting swap size ..." && sed -i "s/32GiB/$SWAP_SIZE/g" /tmp/copycat/base/disko.nix
+echo "Setting swap size ..." && sed -i "s/32GiB/$SWAP_SIZE/g" /tmp/copycat/cfg/disko/disko.nix
 echo "Setting up disk ..." 
 
-nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disk-device.nix --arg device '"/dev/'${DISK_DEV}'"'
+nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/cfg/disko/disk-device.nix --arg device '"/dev/'${DISK_DEV}'"'
 
-nix-shell -p git --run "git clone https://github.com/c-pyc-t/copycat.git /mnt/copycat"
+	nix-shell -p git --run "git clone https://github.com/c-pyc-t/copycat.git /mnt/copycat"
 
-nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
+	nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
+
+else
+	pushd /mnt/copycat > /dev/null
+  nix-shell -p git --run "git stash"
+	nix-shell -p git --run "git pull"
+	nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
+fi
+# DISK FOOTER ABOVE
+
+
 
 pushd /mnt/copycat/cfg/local_origin > /dev/null
 

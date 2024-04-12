@@ -34,11 +34,11 @@
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-				(import ../local_origin/_origin-version.nix)
-				(import ../local_origin/base/hardware-configuration.nix)
+				(import ./local_origin/version.nix)
+				(import ./local_origin/hardware-configuration.nix)
 
         inputs.disko.nixosModules.default
-        (import ./base/disk-device.nix)
+        (import ./disko/disk-device.nix)
 
         ./default.nix #default
       ];
