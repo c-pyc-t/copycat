@@ -17,20 +17,27 @@
 #
 set -e
 
+alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
+psak
+
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
 
 echo "Enter your device name [nvme0n1]: "
-read DISK_DEV
-[[ $DISK_DEV == "" ]] && DISK_DEV="nvme0n1";
-echo "[/dev/$DISK_DEV] ... is this correct?"
-read -n1 -r -p " to confirm [y|enter] : " CHOICE
-case $CHOICE in
-  y|Y|"") echo "" ;;
-  *) exit 1 ;;
-esac
+EXISTS=0
+
+while [[ ! $EXISTS ]]; then
+	read DISK_DEV
+	[[ $DISK_DEV == "" ]] && DISK_DEV="nvme0n1";
+	echo "[/dev/$DISK_DEV] ... is this correct?"
+	read -n1 -r -p " to confirm [y|enter] : " CHOICE
+	case $CHOICE in
+		y|Y|"") echo "" ;;
+		*) exit 1 ;;
+	esac
+fi
 
 
 echo "How much swap? [32GiB]: "
