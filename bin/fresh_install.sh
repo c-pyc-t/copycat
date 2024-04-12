@@ -18,6 +18,18 @@
 set -e
 
 alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
+alias cc=$(
+echo "
+                                              ╻
+      ┏━━━┓ ┏━━━┓ ┏━━━┓ ╻   ╻ ┏━━━┓ ┏━━━┓ ━━━━┫
+  d   ┃           ┃   ┃ ┃   ┃ ┃               ┃
+  r   ┃     ━━━━━ ┃   ┃ ┃   ┃ ┃     ━━━━━     ┃
+  g @ ┃           ┃   ┃ ┃   ┃ ┃               ┃
+  n   ┗━━━┛ ┗━━━┛ ┣━━━┛ ┗━━━┫ ┗━━━┛ ┗━━─┦     ╹
+                  ┃         ┃
+                  ┃         ┃               24.
+"
+)
 
 #echo "Do you wish to install this program?"
 #select yn in "Yes" "No"; do
