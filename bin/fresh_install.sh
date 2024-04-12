@@ -118,15 +118,11 @@ echo "Setting up disk ..."
 
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disk-device.nix --arg device '"/dev/'${DISK_DEV}'"'
 
-#
-# pushd /tmp
-# nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
-# pushd /tmp/copycat/base
-#
-# sed -i "s/32GiB/$SWAP_SIZE/g" disko.nix
-#
-# nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
-#
+nix-shell -p git --run "git clone https://github.com/c-pyc-t/copycat.git /mnt/copycat"
+
+nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
+
+
 # pushd /mnt/copycat
 # nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git ."
 # nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/base
