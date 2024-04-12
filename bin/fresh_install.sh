@@ -18,7 +18,6 @@
 set -e
 
 alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
-psak
 
 #echo "Do you wish to install this program?"
 #select yn in "Yes" "No"; do
@@ -41,6 +40,8 @@ do
 	esac
 
 done
+
+psak
 
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
