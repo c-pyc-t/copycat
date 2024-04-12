@@ -79,7 +79,7 @@ while ( ! $CONTINUE ); do
 		esac
 	done
 done
-DEST_DEV="/dev/$QVAR"
+DISK_DEV="/dev/$QVAR"
 unset QVAR
 unset CONTINUE
 
@@ -114,7 +114,9 @@ echo "Swap Size: $SWAP_SIZE"
 
 echo "Beginning ..."
 echo "Setting swap size ..." && sed -i "s/32GiB/$SWAP_SIZE/g" /tmp/copycat/base/disko.nix
-echo "Setting up disk ..." && nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"'${DISK_DEV}'"'
+echo "Setting up disk ..." 
+
+ nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/copycat/base/disko.nix --arg device '"/dev/'${DISK_DEV}'"'
 
 #
 # pushd /tmp
