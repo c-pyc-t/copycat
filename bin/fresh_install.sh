@@ -108,15 +108,13 @@ unset CONTINUE
 
 psak
 
-# echo "How much swap? [32GiB]: "
-# read SWAP_SIZE
-# [[ $SWAP_SIZE == "" ]] && SWAP_SIZE="32GiB";
-# echo "[$SWAP_SIZE] ... is this correct?"
-# read -n1 -r -p " to confirm [y|enter] : " CHOICE
-# case $CHOICE in
-#   y|Y|"") echo "" ;;
-#   *) exit 1 ;;
-# esac
+
+echo "Device: $DISK_DEV"
+echo "Swap Size: $SWAP_SIZE"
+
+echo "Beginning..."
+echo "Setting swap..." && sed -i "s/32GiB/$SWAP_SIZE/g" /tmp/copycat/base/disko.nix
+
 #
 # pushd /tmp
 # nix-shell -p git --run "git clone https://github.com/nice-0/copycat.git"
