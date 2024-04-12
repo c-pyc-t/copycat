@@ -75,39 +75,32 @@ while ( ! $CONTINUE ); do
 		esac
 	done
 done
+unset QVAR
+unset CONTINUE
 
-exit 100
 psak
-# echo "testing t q f"
-
-# select tqf in "true" "que" "false";
-# do
-#	 case $tqf in
-# 		true ) echo "yea bro"  ;;
-# 		false ) echo "nah bro" ;;
-# 		que ) echo "wtf?"      ;; 
-# 	esac
-# done
 
 
 
+QVAR="32GiB"
+CONTINUE=false
+while ( ! $CONTINUE ); do 
+	echo "Swap size: $QVAR"
+	CONTINUE=true
 
+	select OCE in "ok" "change" "escape";
+	do
+		case $OCE in
+			ok )			[[ $CONTINUE ]] && break												;; 
+			change )	CONTINUE=false && read -p "value: " QVAR; break	;;
+			escape )  exit 1																					;;
+		esac
+	done
+done
+unset QVAR
+unset CONTINUE
 
-
-# echo "Enter your device name [nvme0n1]: "
-# #EXISTS=0
-#
-# #while [[ ! $EXISTS ]]; then
-# 	read DISK_DEV
-# 	[[ $DISK_DEV == "" ]] && DISK_DEV="nvme0n1";
-# 	echo "[/dev/$DISK_DEV] ... is this correct?"
-# 	read -n1 -r -p " to confirm [y|enter] : " CHOICE
-# 	case $CHOICE in
-# 		y|Y|"") echo "" ;;
-# 		*) exit 1 ;;
-# 	esac
-# fi
-#
+psak
 
 # echo "How much swap? [32GiB]: "
 # read SWAP_SIZE
