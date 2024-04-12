@@ -50,6 +50,7 @@ while ( ! $CONTINUE ); do
 		esac
 done
 
+psak
 # echo "testing t q f"
 
 # select tqf in "true" "que" "false";
