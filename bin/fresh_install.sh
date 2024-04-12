@@ -132,6 +132,7 @@ else
 	pushd /mnt/copycat > /dev/null
   nix-shell -p git --run "git stash"
 	nix-shell -p git --run "git pull"
+	rm -rf cfg/local_origin
 	nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
 fi
 # DISK FOOTER ABOVE
