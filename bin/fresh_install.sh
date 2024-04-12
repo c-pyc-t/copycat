@@ -62,9 +62,9 @@ while ( ! $CONTINUE ); do
 	select OCE in "ok" "change" "escape";
 	do
 		case $OCE in
-			ok )			CONTINUE=true; break				;; 
-			change )	read -p "value: " VAR				;;
-			escape )  exit 1											;;
+			ok )			CONTINUE=true; break				 ;; 
+			change )	read -p "value: " VAR; break ;;
+			escape )  exit 1											 ;;
 		esac
 	done
 done
