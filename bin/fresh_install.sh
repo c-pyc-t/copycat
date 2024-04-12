@@ -17,7 +17,7 @@
 #
 set -e
 
-SKIP_DISK=false
+SKIP_DISK=true
 
 DEST_DEV=""
 SWAP_SIZE=""
@@ -129,7 +129,7 @@ nix --experimental-features "nix-command flakes" run github:nix-community/disko 
 	nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
 
 else
-	pushd /mnt/copycat > /dev/null
+	cd /mnt/copycat
   nix-shell -p git --run "git stash"
 	nix-shell -p git --run "git pull"
 	rm -rf cfg/local_origin
