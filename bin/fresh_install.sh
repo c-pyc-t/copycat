@@ -36,7 +36,6 @@ psak
 
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
 
-echo i hate you
 psak
 
 QVAR="nvme0n1"
@@ -51,6 +50,7 @@ while ( ! $CONTINUE ); do
 		esac
 done
 
+exit 100
 psak
 # echo "testing t q f"
 
