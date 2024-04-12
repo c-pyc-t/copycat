@@ -48,14 +48,7 @@ psak
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
-echo ""
-echo ""
-echo ""
-echo ""
-echo ""
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
-echo ""
-echo ""
 echo ""
 echo ""
 echo ""
@@ -65,6 +58,7 @@ psak
 QVAR="nvme0n1"
 CONTINUE=false
 while ( ! $CONTINUE ); do 
+	echo "$QVAR ?"
 	select OCE in "ok" "change" "escape";
 	do
 		case $OCE in
