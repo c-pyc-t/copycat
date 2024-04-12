@@ -28,13 +28,20 @@ alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
 #done
 #
 
-
-psak
-
-
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
+clear
 
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 
 psak
 
