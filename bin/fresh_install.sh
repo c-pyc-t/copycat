@@ -15,7 +15,6 @@
 #
 #   ... (hey thats declaritive at least!)
 #
-#
 set -e
 
 
