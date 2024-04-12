@@ -33,6 +33,7 @@ case $CHOICE in
   *) exit 1 ;;
 esac
 
+exit 127;
 
 echo "How much swap? [32GiB]: "
 read SWAP_SIZE
