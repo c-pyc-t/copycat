@@ -18,7 +18,9 @@
 set -e
 
 alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
+
 clear 
+
 echo ""
 echo ""
 echo ""
