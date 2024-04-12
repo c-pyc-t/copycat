@@ -59,10 +59,11 @@ QVAR="nvme0n1"
 CONTINUE=false
 while ( ! $CONTINUE ); do 
 	if [[ -e "/dev/$QVAR" ]]; then
-		echo "destination device: /dev/$QVAR"
+		echo "destination: /dev/$QVAR [=]"
 		CONTINUE=true
 	else
-		echo "unrecognised device please enter /dev/\"trgtdev\""
+		echo "destination: /dev/$QVAR [!]"
+		echo "unrecognised destination, please enter /dev/\"trgtdev\""
 	fi
 
 	select OCE in "ok" "change" "escape";
