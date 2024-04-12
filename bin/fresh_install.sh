@@ -45,7 +45,7 @@ while ( ! $CONTINUE ); do
 	do
 		case $OCE in
 			ok )			CONTINUE=true; break				;; 
-			change )	read "value: " VAR					;;
+			change )	read -p "value: " VAR				;;
 			escape )  exit 1											;;
 		esac
 done
