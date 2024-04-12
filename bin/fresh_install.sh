@@ -48,6 +48,7 @@ while ( ! $CONTINUE ); do
 			change )	read -p "value: " VAR				;;
 			escape )  exit 1											;;
 		esac
+	done
 done
 
 exit 100
