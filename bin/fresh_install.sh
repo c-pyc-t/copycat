@@ -41,6 +41,7 @@ do
 
 done
 
+echo how far behind are you? 1
 psak
 
 
