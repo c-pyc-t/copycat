@@ -29,6 +29,7 @@ psak
 #done
 
 
+echo "seriously update wtf"
 
 [[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
