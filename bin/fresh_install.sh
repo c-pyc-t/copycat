@@ -19,20 +19,20 @@ alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
 
 clear 
 
-echo "																										"
-echo "																										"
+echo ""
+echo ""
 echo "                                                   ╻"
 echo "           ┏━━━┓ ┏━━━┓ ┏━━━┓ ╻   ╻ ┏━━━┓ ┏━━━┓ ━━━━┫"
 echo "       d   ┃     ┃   ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
 echo "       r   ┃     ┃ / ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
-echo "			 g @ ┃     ┃   ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
-echo "			 n   ┗━━━┛ ┗━━━┛ ┣━━━┛ ┗━━━┫ ┗━━━┛ ┗━━─┃     ┃"
-echo "					             ┃         ┃									"
-echo "																										"
+echo "       g @ ┃     ┃   ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
+echo "       n   ┗━━━┛ ┗━━━┛ ┣━━━┛ ┗━━━┫ ┗━━━┛ ┗━━─┃     ┃"
+echo "                       ┃         ┃"
+echo ""
 echo "        I'm a bad girl, but a good story where I go."
 echo "  I've nothing in my pockets but everything to show."
-echo "																										"
-echo "																										"
+echo ""
+echo "" 
 
 psak
 
