@@ -218,6 +218,23 @@
 		};
 
 
+		# SERVICES
+
+		services.xserver.enable = true;
+#		services.xserver.displayManager.sddm.enable = true;
+		services.xserver.displayManager.enable = true;
+		services.desktopManager.plasma6.enable = true; # this is running off unstable currently apparently 
+		services.xserver.displayManager.sddm.wayland.enable = true;
+
+		environment.plasma6.excludePackages = with pkgs.kdePackages; [
+			# just in case
+		];
+
+		programs.dconf.enable = true;
+		# doing gnome theming and shit seems like it might be a pita
+		# check https://nixos.wiki/wiki/KDE for more details
+
+
 		# APPLICATIONS
 		# Programs
 		programs.zsh.enable = true;
@@ -232,12 +249,13 @@
 			neovim
 			git
 			home-manager
-			age
-			sops
 			eza
 			man
 			manix
-
+			gnupg # good write up on sops/pgp: 
+			sops  # https://blog.gitguardian.com/a-comprehensive-guide-to-sops/
+			age   # while a bit surface level, it's great for brushing up on knowledges
+			
 			# ux
 			rust-motd
 			dunst

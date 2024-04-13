@@ -28,7 +28,7 @@ echo "       r   ┃     ┃ / ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃
 echo "       g @ ┃     ┃   ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
 echo "       n   ┗━━━┛ ┗━━━┛ ┣━━━┛ ┗━━━┫ ┗━━━┛ ┗━━─┃     ┃"
 echo "                       ┃         ┃"
-echo "																									24"
+echo "                                                  24"
 echo ""
 echo "        I'm a bad girl, but a good story where I go."
 echo "  I've nothing in my pockets but everything to show."
@@ -160,6 +160,25 @@ nix shell nixpkgs#age ssh-to-age -- -private-key -i \
 																		/mnt/copycat/keys/sys/ssh/_system.key > \
 																		/mnt/copycat/keys/sys/sec/_age.key 
 
+# TESTS
+# tests and shit... 
+# really?
+# i mean maybe.
+
+# export KEY_NAME="copycat"
+# export KEY_COMMENT="this is a test after installation"
+#
+# gpg --batch -full-generate-key <<EOF
+# %no-protection
+# Key-Type: 1
+# Key-Length: 4096
+# Subkey-Type: 1
+# Subkey-Length: 4096
+# Expire-Date: 0
+# Name-Comment: ${KEY_COMMENT}
+# Name-Real: ${KEY_NAME}
+# EOF
+#
 
 # ### 
 # # setup keys/secret/password shit
