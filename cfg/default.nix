@@ -221,8 +221,7 @@
 		# SERVICES
 
 		services.xserver.enable = true;
-#		services.xserver.displayManager.sddm.enable = true;
-		services.xserver.displayManager.enable = true;
+		services.xserver.displayManager.sddm.enable = true;
 		services.desktopManager.plasma6.enable = true; # this is running off unstable currently apparently 
 		services.xserver.displayManager.sddm.wayland.enable = true;
 
