@@ -1,22 +1,16 @@
 #!/bin/bash
-# new_install.sh
+# copycat.sh
 #
 # description: install nixos on a new system
 # @drgn
 #
 # usage:
-#   remotely: sh <(curl imp.nz)
-#   locally: sh .. bin/new_install.sh
+#   remotely: sh <(curl imp.nz/i)
+#   locally: sh .. bin/copycat.sh
 #
-# NOTES:
-#   this is not very dynamic - yet, if i feel the need i'll update it to be so
-#   importantly you will need to manually and preemptively handle the file names
-#   and device names currently
-#
-#   ... (hey thats declaritive at least!)
-#
-set -e
+[[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
+set -e
 
 DEST_DEV=""
 SWAP_SIZE=""
@@ -25,37 +19,27 @@ alias psak=$(read -t 5 -n 1 -s -r -p "Press any key to continue")
 
 clear 
 
-echo ""
-echo ""
-echo ""
-echo "                                              ╻"
-echo "      ┏━━━┓ ┏━━━┓ ┏━━━┓ ╻   ╻ ┏━━━┓ ┏━━━┓ ━━━━┫"
-echo "  d   ┃           ┃   ┃ ┃   ┃ ┃               ┃"
-echo "  r   ┃     ━━━━━ ┃   ┃ ┃   ┃ ┃     ━━━━━     ┃"
-echo "  g @ ┃           ┃   ┃ ┃   ┃ ┃               ┃"
-echo "  n   ┗━━━┛ ┗━━━┛ ┣━━━┛ ┗━━━┫ ┗━━━┛ ┗━━─┦     ╹"
-echo "                  ┃         ┃									"
-echo "                  ┃         ┃               24."
-echo ""
-echo ""
-echo ""
+echo "																										"
+echo "																										"
+echo "                                                   ╻"
+echo "           ┏━━━┓ ┏━━━┓ ┏━━━┓ ╻   ╻ ┏━━━┓ ┏━━━┓ ━━━━┫"
+echo "       d   ┃     ┃   ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
+echo "       r   ┃     ┃ / ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
+echo "			 g @ ┃     ┃   ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
+echo "			 n   ┗━━━┛ ┗━━━┛ ┣━━━┛ ┗━━━┫ ┗━━━┛ ┗━━─┃     ┃"
+echo "					             ┃         ┃									"
+echo "																										"
+echo "        I'm a bad girl, but a good story where I go."
+echo "  I've nothing in my pockets but everything to show."
+echo "																										"
+echo "																										"
 
 psak
-#echo "Do you wish to install this program?"
-#select yn in "Yes" "No"; do
-#    case $yn in
-#        Yes ) make install; break;;
-#        No ) exit;;
-#    esac
-#done
-#
-
 
 ## DISK HEAD
 ## COPY IN TOTAL - WE NEED TO DO SOME ANNOYING CONDITIONALS
 if [[ ! -d '/mnt/copycat' ]]; then
 
-[[ ! `whoami` == "root"  ]] && echo "Must be run as root.." && exit 1
 
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
 echo ""
