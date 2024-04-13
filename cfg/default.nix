@@ -264,6 +264,7 @@
 			wofi
 			foot
 			yambar # look into foot and yambar more seriously, seem like great projects.
+			steam
 
 			# photography stuff
 			rawtherapee
