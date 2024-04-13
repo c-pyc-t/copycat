@@ -247,6 +247,7 @@
 			vim
 			neovim
 			git
+			alejandra
 			home-manager
 			eza
 			man
