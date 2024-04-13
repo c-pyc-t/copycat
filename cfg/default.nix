@@ -234,6 +234,7 @@
 			home-manager
 			age
 			sops
+			exa
 
 			# ux
 			rust-motd
