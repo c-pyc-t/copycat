@@ -145,7 +145,7 @@ nix --extra-experimental-features "nix-command flakes" shell nixpkgs#openssh -c 
 		ssh-keygen -f \
 			/mnt/copycat/keys/sys/ssh_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
 
-nix --extra-experimental-features "nix-command flakes" shell nixpkgs#age -c \
+nix --extra-experimental-features "nix-command flakes" shell nixpkgs#ssh-to-age -c \
 		ssh-to-age -private-key -i \
 			/mnt/copycat/keys/sys/ssh_system.key > \
 			/mnt/copycat/keys/sys/age.key 
