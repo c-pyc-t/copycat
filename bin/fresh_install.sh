@@ -152,6 +152,8 @@ nix-shell -p git --run "
 	git stash
 "
 
+nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
+
 # ### 
 # # setup keys/secret/password shit
 # #
