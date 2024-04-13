@@ -156,10 +156,14 @@ mkdir -p /mnt/copycat/keys/sys/sec 2> /dev/null
 mkdir -p /mnt/copycat/keys/sys/ssh 2> /dev/null
 #nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
 # id like to use higher than 4096, but 4096 is pretty much the highest 'standard' around
-nix shell nixpkgs#ssh ssh-keygen -f /mnt/copycat/keys/sys/ssh/_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
-nix shell nixpkgs#age ssh-to-age -- -private-key -i \
-																		/mnt/copycat/keys/sys/ssh_system.key > \
-																		/mnt/copycat/keys/sys/age.key 
+nix --extra-experimental-features "nix-command flakes" shell nixpkgs#ssh -c\
+		ssh-keygen -f \
+			/mnt/copycat/keys/sys/ssh/_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
+
+nix --extra-experimental-features "nix-command flakes" shell nixpkgs#age -c\
+		ssh-to-age -private-key -i \
+			/mnt/copycat/keys/sys/ssh_system.key > \
+			/mnt/copycat/keys/sys/age.key 
 
 # TESTS
 # tests and shit... 
