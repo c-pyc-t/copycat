@@ -230,12 +230,11 @@
 			vim
 			neovim
 			git
-			lazygit
 			home-manager
-			kitty
+			foot
+			yambar # look into foot and yambar more seriously, seem like great projects.
 			dunst
 			wofi
-			qutebrowser
 			age
 			sops
 		];
