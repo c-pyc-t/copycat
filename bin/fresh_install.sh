@@ -147,6 +147,7 @@ echo "}" >> version.nix
 #nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
 
+nix-shell -p git --run "git add -A && git commit -a --allow-empty-message -m 'enjoy your new system'"
 nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
 
 ####
