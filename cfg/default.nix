@@ -135,7 +135,6 @@
 		# BLUETOOTH
 		hardware.bluetooth.enable = true;
 		hardware.bluetooth.powerOnBoot = true;
-		services.blueman.enable = true;
 
 		# AUDIO 
 		# Remove sound.enable or set it to false if you had it set previously, as sound.enable is only meant for ALSA-based configurations
@@ -165,7 +164,7 @@
 			"d /static 755 root users ~7d"	# holds data within /static for 7d, will NOT remove files/directories immediately inside
 			"d /static/u 755 root users"
 			"d /copycat 775 root copycat"  # this will be where our actual system configuration will live in perpetuity
-			# "H /copycat/* 775 copycat copycat"
+			"H /copycat/* 775 copycat copycat"
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
 #			EXAMPLES: 
