@@ -257,6 +257,8 @@
 			
 			# ux
 			rust-motd
+			firefox
+			ungoogled-chromium
 			dunst
 			wofi
 			foot
