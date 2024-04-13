@@ -152,6 +152,7 @@ nix-shell -p git --run "
 	git stash
 "
 
+mkdir -p /mnt/copy/cat/keys/sys/sec 2> /dev/null
 nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
 
 # ### 
