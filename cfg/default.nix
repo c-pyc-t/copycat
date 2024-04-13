@@ -220,7 +220,7 @@
 
 		# APPLICATIONS
 		# Programs
-		programs.zsh.enable = true
+		programs.zsh.enable = true;
 
 		# Packages
 		# When you can add things with programs.PROGRAM - as there seems to be more support with the way it ties in
