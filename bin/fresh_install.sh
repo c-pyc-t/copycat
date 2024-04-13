@@ -28,6 +28,7 @@ echo "       r   ┃     ┃ / ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃
 echo "       g @ ┃     ┃   ┃ ┃   ┃ ┃   ┃ ┃     ┃   ┃     ┃"
 echo "       n   ┗━━━┛ ┗━━━┛ ┣━━━┛ ┗━━━┫ ┗━━━┛ ┗━━─┃     ┃"
 echo "                       ┃         ┃"
+echo "																									24"
 echo ""
 echo "        I'm a bad girl, but a good story where I go."
 echo "  I've nothing in my pockets but everything to show."
@@ -42,7 +43,6 @@ if [[ ! -d '/mnt/copycat' ]]; then
 
 
 echo "THIS WILL NUKE WHATEVER DEVICE YOU POINT IT AT WITHOUT CHECKS AND SAFETY, YOU HAVE BEEN WARNED"
-echo ""
 echo ""
 echo ""
 
@@ -134,11 +134,6 @@ nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_
 nix-shell -p git --run "git config --global user.email \"copycat@imp.nz\" && git config --global user.name \"copycat\" && git add -A && git commit -a --allow-empty-message -m 'enjoy your new system'"
 nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
 
-####
-# nix shell --extra-experimental-features "nix-command flakes" nixpkgs#git
-####
-
-#
 # ### 
 # # setup keys/secret/password shit
 # #
