@@ -144,11 +144,11 @@ echo "{" > version.nix
 cat configuration.nix | grep "system.stateVersion" >> version.nix
 echo "}" >> version.nix
 
-nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos
+#nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
 
 
-sed -i "s/local_origin/TMP_DISABLE/g" /mnt/copycat/.gitignore
+#sed -i "s/local_origin/TMP_DISABLE/g" /mnt/copycat/.gitignore
 nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
 sed -i "s/TMP_DISABLE/local_origin/g" /mnt/copycat/.gitignore
 
