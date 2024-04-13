@@ -34,8 +34,13 @@
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
+
+				# vvv ATTENTION HARDWARE BLOCK vvv
+				# this should just be set and forget, forever and ever hopefully...
+				# do not change unless you're changing the fundamental structure intentionally
 				(import ./local_origin/version.nix)
 				(import ./local_origin/hardware-configuration.nix)
+				# ^^^ END HARDWARE BLOCK ^^^
 
         inputs.disko.nixosModules.default
         (import ./disko/disk-device.nix)

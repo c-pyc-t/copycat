@@ -49,7 +49,6 @@
 # difficult to untether a bunch of interlinking config files - so having this 'plan' to stick to means 
 # we hopefully avoid that in the future but still allow for extensibility.
 # 
-#WARNING: DO NOT TOUCH `./_origin-version.nix` UNLESS ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING
 
 { pkgs, lib, inputs, ... }:
 
@@ -187,10 +186,6 @@
 
 		programs.hyprland.enable = true;
 #		programs.hyprland.package = inputs.hyprland.package."${pkgs.system}".hyprland; # apparently this is better but it doesnt work for me yet? typo?
-		
-		# dunno if i actually like fish ... use it for longer
-		programs.fish.enable = true;
-		users.defaultUserShell = pkgs.fish;
 
 
 		# SERVICES 
@@ -223,8 +218,15 @@
 		};
 
 
+		# APPLICATIONS
+		# Programs
+		programs.zsh.enable = true
+
+		# Packages
 		# When you can add things with programs.PROGRAM - as there seems to be more support with the way it ties in
 		environment.systemPackages = with pkgs; [
+			rust-motd
+			bash
 			vim
 			neovim
 			git
@@ -238,6 +240,10 @@
 			sops
 		];
 
+		# Configuration
+		# Programs
+		users.defaultUserShell = pkgs.bash;
+
 
 
 		# USER SETUP
@@ -245,7 +251,7 @@
 			isNormalUser = true;
 			home = "/static/u/drgn"; # make absolutely sure not to have a trailing slash on HOME dirs
 			description = "I'm a bad girl, but a good story where I go. I've nothing in my pockets but everything to show.";
-			shell = pkgs.fish;
+			shell = pkgs.zsh;
 			initialPassword = ''\'';
 			extraGroups = [ "wheel" "networkmanager" "copycat" ];
 			# packages = with pkgs; [
