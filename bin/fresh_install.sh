@@ -131,8 +131,23 @@ echo "}" >> version.nix
 #nixos-generate-config --no-filesystems --root /mnt --dir /mnt/etc/nixos
 nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_origin
 
-nix-shell -p git --run "git config --global user.email \"copycat@imp.nz\" && git config --global user.name \"copycat\" && git add -A && git commit -a --allow-empty-message -m 'enjoy your new system'"
+#nix-shell -p git --run "git config --global user.email \"copycat@imp.nz\" && git config --global user.name \"copycat\" && git add -A && git commit -a --allow-empty-message -m 'enjoy your new system'"
+
+pushd /mnt/copycat > /dev/null
+
+sed -i "s/local_origin/TEMPORARY_DISABLE/g" .gitignore
+
+nix-shell -p git --run "
+	git config user.email \"copycat@imp.nz\" && 
+	git config user.name \"copycat\" && 
+	git add -A && 
+	git commit -a --allow-empty-message -m 'enjoy your new system ~mew.'"
+
 nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
+
+nix-shell -p git --run "
+	git stash
+"
 
 # ### 
 # # setup keys/secret/password shit
