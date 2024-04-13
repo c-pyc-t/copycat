@@ -135,6 +135,7 @@ nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_
 
 pushd /mnt/copycat > /dev/null
 
+
 sed -i "s/local_origin/TEMPORARY_DISABLE/g" .gitignore
 
 nix-shell -p git --run "
@@ -143,7 +144,9 @@ nix-shell -p git --run "
 	git add -A && 
 	git commit -a --allow-empty-message -m 'enjoy your new system ~mew.'"
 
+
 nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
+# divergent git paths somewhere around here need to figure out how to do this cleanly/properly
 
 nix-shell -p git --run "
 	git stash
