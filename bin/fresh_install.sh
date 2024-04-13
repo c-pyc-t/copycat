@@ -136,7 +136,24 @@ nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_
 pushd /mnt/copycat > /dev/null
 
 
+# seems like keygen will have to be done before install as well 
+mkdir -p /mnt/copycat/keys/sys/sec 2> /dev/null
+mkdir -p /mnt/copycat/keys/sys/ssh 2> /dev/null
+#nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
+# id like to use higher than 4096, but 4096 is pretty much the highest 'standard' around
+nix --extra-experimental-features "nix-command flakes" shell nixpkgs#openssh -c \
+		ssh-keygen -f \
+			/mnt/copycat/keys/sys/ssh_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
+
+nix --extra-experimental-features "nix-command flakes" shell nixpkgs#age -c \
+		ssh-to-age -private-key -i \
+			/mnt/copycat/keys/sys/ssh_system.key > \
+			/mnt/copycat/keys/sys/age.key 
+
+
+# INSTALLATION
 sed -i "s/local_origin/TEMPORARY_DISABLE/g" .gitignore
+sed -i "s/flake.lock/TEMPORARY_DISABLE/g" .gitignore
 
 nix-shell -p git --run "
 	git config user.email \"copycat@imp.nz\" && 
@@ -151,19 +168,6 @@ nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/
 nix-shell -p git --run "
 	git stash
 "
-
-mkdir -p /mnt/copycat/keys/sys/sec 2> /dev/null
-mkdir -p /mnt/copycat/keys/sys/ssh 2> /dev/null
-#nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
-# id like to use higher than 4096, but 4096 is pretty much the highest 'standard' around
-nix --extra-experimental-features "nix-command flakes" shell nixpkgs#openssh -c \
-		ssh-keygen -f \
-			/mnt/copycat/keys/sys/ssh_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
-
-nix --extra-experimental-features "nix-command flakes" shell nixpkgs#age -c \
-		ssh-to-age -private-key -i \
-			/mnt/copycat/keys/sys/ssh_system.key > \
-			/mnt/copycat/keys/sys/age.key 
 
 # TESTS
 # tests and shit... 
