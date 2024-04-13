@@ -235,6 +235,8 @@
 			age
 			sops
 			eza
+			man
+			manix
 
 			# ux
 			rust-motd

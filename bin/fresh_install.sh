@@ -153,7 +153,13 @@ nix-shell -p git --run "
 "
 
 mkdir -p /mnt/copy/cat/keys/sys/sec 2> /dev/null
-nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
+#nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
+# id like to use higher than 4096, but 4096 is pretty much the highest 'standard' around
+nix shell nixpkgs#ssh ssh-keygen -f /mnt/copycat/keys/sys/ssh/_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
+nix shell nixpkgs#age ssh-to-age -- -private-key -i \
+																		/mnt/copycat/keys/sys/ssh/_system.key > \
+																		/mnt/copycat/keys/sys/sec/_age.key 
+
 
 # ### 
 # # setup keys/secret/password shit
@@ -206,7 +212,7 @@ nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
 # echo "      extra layer of security should i want to implement it "
 # echo "      in the future, and doesn't change the basic functionality"
 # echo "      aka win/win ..."
-# echo "  @niceguy"
+# echo "  @drgn"
 # echo ""
 # echo    "Press any key to reboot..."
 # read -p "     <C-c>-c-c-to-caaancel" && reboot
