@@ -161,9 +161,10 @@
 		# 
 		# worth noting this will only be used for creation/updating automagically - it will create new in place what it says (meaning it will overwrite permissions but its not moving the directory), will also not remove anything without a clean
 		systemd.tmpfiles.rules = [
-			"d /static 755 root users ~7d"	# holds data within /static for 7d, will NOT remove files/directories immediately inside
+			"d /static 755 root users"	# holds data within /static for 7d, will NOT remove files/directories immediately inside
 			"d /static/u 755 root users"
 			"d /copycat 775 root copycat"  # this will be where our actual system configuration will live in perpetuity
+			"d /copycat/keys 700 root root"
 			"H /copycat/* 775 copycat copycat"
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
