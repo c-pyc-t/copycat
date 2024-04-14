@@ -154,34 +154,17 @@ nix --extra-experimental-features "nix-command flakes" shell nixpkgs#ssh-to-age 
 			/mnt/copycat/keys/sys/age.key 
 
 
-# concept here is GPG is our backup-backup - instead of generating this, this will need to be implanted into a new system to bring it 'fully' online. 
-#
-# this isn't so much a security trigger
-#
-# this is more important
-#
-# this saves us from ourself - keep this shit in cold storage SOMEWHERE
-#
-# one usb that should basically live with my passport
-# one usb that should basically live anywhere not with me ... 
-#
-# gpg --batch -full-generate-key <<EOF
-# %no-protection
-# Key-Type: 1
-# Key-Length: 4096
-# Subkey-Type: 1
-# Subkey-Length: 4096
-# Expire-Date: 0
-# Name-Comment: system configuration gpg key generated: $(date -I'seconds') 
-# Name-Real: copycat
-# EOF
-
-# concept remains, but instead we will use age, this has benefits over gpg, ive researched them, but i cbf pasting shit here to convince future me...
-
+# If I were serious and had something valuable to share I SHOULD have pgp (gpg) key for signing
+# Just for verification.
+# Thinking about this, this is likely something I could use to tag photos
+# that or doing the whole blockchain thing ... yknow properly
+# people really have no fucking clue how to use blockchain yknow... its also actually money.
+# to really do it youd need buy in from fintech in general though.
+# pipe dreams aside, put me on the front lines after all.
 
 # INSTALLATION
-sed -i "s/local_origin/TEMPORARY_DISABLE/g" .gitignore
-sed -i "s/flake.lock/TEMPORARY_DISABLE/g" .gitignore
+sed -i "s/local_origin/LOCAL_ORIGIN/g" .gitignore
+sed -i "s/flake.lock/FLAKE.LOCK/g" .gitignore
 
 # This is an intentionally 'dumb' commit - meaning it just wants to commit to complete
 # the install ... 
@@ -196,46 +179,15 @@ nix-shell -p git --run "
 nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
 # divergent git paths somewhere around here need to figure out how to do this cleanly/properly
 
+sed -i "s/LOCAL_ORIGIN/local_origin/g" .gitignore
+sed -i "s/FLAKE.LOCK/flake.lock/g" .gitignore
+
 nix-shell -p git --run "
 	git stash
 "
 
 
 
-# ### 
-# # setup keys/secret/password shit
-# #
-#
-# # from vimjoyer
-# # generate new key at ~/.config/sops/age/keys.txt
-# # nix shell nixpkgs#age age-keygen -o ~/.config/sops/age/keys.txt
-#
-# # generate new key at ~/.config/sops/age/keys.txt from private ssh key at ~/.ssh/private 
-# # nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/private > ~/.config/sops/age/keys.txt
-#
-# # So it seems we should start from an SSH key that way we have all the necessary tools for our
-# # systems key management - in theory i think of this more like a butler going back and forth 
-# # fetching the correct things but i can step in to adjust things if needed unlike most other
-# # authentication methods where a bunch of unknown shit happens... 
-# #
-# mkdir -p /mnt/copycat/keys
-# pushd /mnt/copycat/keys
-#
-# ssh-keygen -f ./ssh.key -t ed25519 -b 4096 -N '' -C "copycat@copycat@copycat"
-#
-# # while possible to just simply generate the age.key from ssh.key, that being deterministic
-# # gives me the heebies - i think ill just keep a unique age key for unlocking 'local' or internal-to-me
-# # systems.
-#
-# # SSH -> AGE way [defunct for my purposes]
-# # nix --experimental-features "nix-command flakes" run nixpkgs#ssh-to-age -- -private-key -i ./ssh.key > ./age.key
-# # nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -y ./age.key > ./age.key.pub
-#
-# # AGE GENERATION
-# nix --experimental-features "nix-command flakes" shell nixpkgs#age -c age-keygen -o age.key
-#
-# echo "# copycat ssh.key.pub" >> /tmp/pubs
-# cat ssh.key.pub >> /tmp/pubs
 #
 # # this prints a public version to stdout (we pipe to termbin because boss)
 # echo ""
