@@ -259,6 +259,7 @@
 			gnupg # good write up on sops/pgp: 
 			sops  # https://blog.gitguardian.com/a-comprehensive-guide-to-sops/
 			age   # while a bit surface level, it's great for brushing up on knowledges
+			pinentry
 			
 			# ux
 			rust-motd
