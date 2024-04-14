@@ -133,14 +133,17 @@ nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_
 
 #nix-shell -p git --run "git config --global user.email \"copycat@imp.nz\" && git config --global user.name \"copycat\" && git add -A && git commit -a --allow-empty-message -m 'enjoy your new system'"
 
-pushd /mnt/copycat > /dev/null
 
+# KEY GENERATION
+
+pushd /mnt/copycat > /dev/null
 
 # seems like keygen will have to be done before install as well 
 mkdir -p /mnt/copycat/keys/sys/sec 2> /dev/null
 mkdir -p /mnt/copycat/keys/sys/ssh 2> /dev/null
-#nix shell nixpkgs#age age-keygen -o /mnt/copycat/keys/sys/sec/_sops_age.key
+
 # id like to use higher than 4096, but 4096 is pretty much the highest 'standard' around
+# in short, it's doable, it just isn't a good idea, yet.
 nix --extra-experimental-features "nix-command flakes" shell nixpkgs#openssh -c \
 		ssh-keygen -f \
 			/mnt/copycat/keys/sys/ssh_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
@@ -151,10 +154,38 @@ nix --extra-experimental-features "nix-command flakes" shell nixpkgs#ssh-to-age 
 			/mnt/copycat/keys/sys/age.key 
 
 
+# concept here is GPG is our backup-backup - instead of generating this, this will need to be implanted into a new system to bring it 'fully' online. 
+#
+# this isn't so much a security trigger
+#
+# this is more important
+#
+# this saves us from ourself - keep this shit in cold storage SOMEWHERE
+#
+# one usb that should basically live with my passport
+# one usb that should basically live anywhere not with me ... 
+#
+# gpg --batch -full-generate-key <<EOF
+# %no-protection
+# Key-Type: 1
+# Key-Length: 4096
+# Subkey-Type: 1
+# Subkey-Length: 4096
+# Expire-Date: 0
+# Name-Comment: system configuration gpg key generated: $(date -I'seconds') 
+# Name-Real: copycat
+# EOF
+
+# concept remains, but instead we will use age, this has benefits over gpg, ive researched them, but i cbf pasting shit here to convince future me...
+
+
 # INSTALLATION
 sed -i "s/local_origin/TEMPORARY_DISABLE/g" .gitignore
 sed -i "s/flake.lock/TEMPORARY_DISABLE/g" .gitignore
 
+# This is an intentionally 'dumb' commit - meaning it just wants to commit to complete
+# the install ... 
+# in short, make sure as shit this DOESN'T propagate 
 nix-shell -p git --run "
 	git config user.email \"copycat@imp.nz\" && 
 	git config user.name \"copycat\" && 
@@ -169,25 +200,7 @@ nix-shell -p git --run "
 	git stash
 "
 
-# TESTS
-# tests and shit... 
-# really?
-# i mean maybe.
 
-# export KEY_NAME="copycat"
-# export KEY_COMMENT="this is a test after installation"
-#
-# gpg --batch -full-generate-key <<EOF
-# %no-protection
-# Key-Type: 1
-# Key-Length: 4096
-# Subkey-Type: 1
-# Subkey-Length: 4096
-# Expire-Date: 0
-# Name-Comment: ${KEY_COMMENT}
-# Name-Real: ${KEY_NAME}
-# EOF
-#
 
 # ### 
 # # setup keys/secret/password shit
