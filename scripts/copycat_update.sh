@@ -13,5 +13,8 @@ TIMESTAMP=$(date --rfc-3339=ns)
 git add -A 
 git commit -F- <<EOF
 $TIMESTAMP
-echo hi
+    へ
+（• ˕ •マ
+   ~mew.
 EOF
+git push
