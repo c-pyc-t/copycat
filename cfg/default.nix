@@ -171,10 +171,16 @@
 		systemd.tmpfiles.rules = [
 			"d /static 755 root users"	# holds data within /static for 7d, will NOT remove files/directories immediately inside
 			"d /static/u 755 root users"
+
 			"d /copycat 775 root copycat"  # this will be where our actual system configuration will live in perpetuity
-			"Z /copycat 775 root copycat"
-#			"d /copycat/keys 750 root copycat"
-			"Z /copycat/keys 750 root copycat"
+#			"Z /copycat 775 root copycat"
+			
+			"z /copycat/keys/sys 710 copycat copycat"
+			"f /copycat/keys/sys/ssh_system.key 600 copycat copycat"
+			"f /copycat/keys/sys/ssh_system.key.pub 644 copycat copycat"
+			
+#			"f /copycat/boys 777 copycat copycat my milkshake brings all the boys to the yard"
+
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
 #			EXAMPLES: 
