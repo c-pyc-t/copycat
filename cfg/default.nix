@@ -310,6 +310,7 @@
 			
 			bat
 			nvimpager
+			libsForQt5.kcharselect
 		];
 
 		# Configuration

@@ -12,6 +12,9 @@ TIMESTAMP=$(date --rfc-3339=ns)
 
 git add -A 
 git commit -F- <<EOF
+ 
+ copycat
+
 $TIMESTAMP
 
 $(nixos-rebuild --flake /copycat/cfg#copycat list-generations)
