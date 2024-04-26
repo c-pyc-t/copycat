@@ -1,5 +1,5 @@
 #!/bin/bash
-
+{
 pushd /copycat 1 2>/dev/null
 
 git remote set-url origin git@github.com:c-pyc-t/copycat.git
@@ -23,3 +23,4 @@ $(nixos-rebuild --flake /copycat/cfg#copycat list-generations)
    ~mew.
 EOF
 git push
+}

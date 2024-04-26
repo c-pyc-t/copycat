@@ -177,8 +177,8 @@ nix --extra-experimental-features "nix-command flakes" shell nixpkgs#openssh -c 
 
 nix --extra-experimental-features "nix-command flakes" shell nixpkgs#ssh-to-age -c \
 		ssh-to-age -private-key -i \
-			/mnt/copycat/keys/sys/ssh_system.key > \
-			/mnt/copycat/keys/sys/age.key 
+			/mnt/static/console/keys/sys/ssh_system.key > \
+			/mnt/static/console/keys/sys/age.key 
 
 
 # If I were serious and had something valuable to share I SHOULD have pgp (gpg) key for signing
@@ -191,7 +191,6 @@ nix --extra-experimental-features "nix-command flakes" shell nixpkgs#ssh-to-age 
 
 # INSTALLATION
 sed -i "s/local_origin/LOCAL_ORIGIN/g" .gitignore
-sed -i "s/flake.lock/FLAKE.LOCK/g" .gitignore
 
 # This is an intentionally 'dumb' commit - meaning it just wants to commit to complete
 # the install ... 
