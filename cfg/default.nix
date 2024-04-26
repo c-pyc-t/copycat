@@ -169,17 +169,21 @@
 		# 
 		# worth noting this will only be used for creation/updating automagically - it will create new in place what it says (meaning it will overwrite permissions but its not moving the directory), will also not remove anything without a clean
 		systemd.tmpfiles.rules = [
-			"d /static 755 root users"	# holds data within /static for 7d, will NOT remove files/directories immediately inside
+			# STATIC PERMISSIONS
+			"d /static 755 root users"	
 			"d /static/u 755 root users"
 
-			"d /copycat 775 root copycat"  # this will be where our actual system configuration will live in perpetuity
-#			"Z /copycat 775 root copycat"
-			
-			"z /copycat/keys/sys 710 copycat copycat"
-			"f /copycat/keys/sys/ssh_system.key 600 copycat copycat"
-			"f /copycat/keys/sys/ssh_system.key.pub 644 copycat copycat"
-			
-#			"f /copycat/boys 777 copycat copycat my milkshake brings all the boys to the yard"
+			# CONSOLE PERMISSIONS
+			"d /static/console 750 root copycat"
+			"d /static/console/keys 750 root copycat"
+			"f /static/console/keys/sys 750 root copycat"
+			"f /static/console/keys/sys/age.key 600 copycat copycat"
+			"f /static/console/keys/sys/ssh_system.key 600 copycat copycat"
+			"f /static/console/keys/sys/ssh_system.key.pub 644 copycat copycat"
+
+			# NIXOS CONFIGURATION PERMISSIONS
+			"d /copycat 775 copycat copycat"  # this will be where our actual system configuration will live in perpetuity
+			"H /copycat 775 copycat copycat"
 
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
@@ -279,7 +283,7 @@
 			
 			# ux
 			rust-motd
-			firefox-unwrapped
+			firefox
 #			ungoogled-chromium
 			dunst
 			wofi
@@ -287,14 +291,13 @@
 			yambar # look into foot and yambar more seriously, seem like great projects.
 
 			# photography stuff
-			rawtherapee
 			darktable
 
 			discord
 			keepassxc
 			librewolf
 			spotify
-			thunderbird-unwrapped
+			thunderbird
 			obsidian
 
 			# misc 
@@ -305,6 +308,8 @@
 			nom
 			nh
 			
+			bat
+			nvimpager
 		];
 
 		# Configuration

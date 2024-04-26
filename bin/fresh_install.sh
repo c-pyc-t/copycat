@@ -139,11 +139,38 @@ nixos-generate-config --no-filesystems --root /mnt --dir /mnt/copycat/cfg/local_
 pushd /mnt/copycat > /dev/null
 
 # seems like keygen will have to be done before install as well 
-mkdir -p /mnt/copycat/keys/sys/sec 2> /dev/null
-mkdir -p /mnt/copycat/keys/sys/ssh 2> /dev/null
+# mkdir -p /mnt/copycat/keys/sys/sec 2> /dev/null
+# mkdir -p /mnt/copycat/keys/sys/ssh 2> /dev/null
 
 # id like to use higher than 4096, but 4096 is pretty much the highest 'standard' around
 # in short, it's doable, it just isn't a good idea, yet.
+
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+psak
+echo NOTE YOU SHOULD CANCEL HERE AND CHECK WHATS GOING ON - WE HAD TO MOVE KEYS - THIS WONT HOLD
+
+
+
+
+
+####
 nix --extra-experimental-features "nix-command flakes" shell nixpkgs#openssh -c \
 		ssh-keygen -f \
 			/mnt/copycat/keys/sys/ssh_system.key -t ed25519 -b 4096 -N '' -C "copycat@c-pyc-t@imp"
