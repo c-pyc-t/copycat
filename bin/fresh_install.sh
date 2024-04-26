@@ -176,7 +176,7 @@ nix-shell -p git --run "
 	git commit -a --allow-empty-message -m 'enjoy your new system ~mew.'"
 
 
-nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#default"
+nix-shell -p git --run "nixos-install --impure --root /mnt --flake /mnt/copycat/cfg#copycat"
 # divergent git paths somewhere around here need to figure out how to do this cleanly/properly
 
 sed -i "s/LOCAL_ORIGIN/local_origin/g" .gitignore

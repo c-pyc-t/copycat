@@ -66,6 +66,9 @@
 		# NixOS SETTINGS
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+		environment.sessionVariables = {
+			FLAKE = "/copycat/cfg";
+		};
 
 		# BOOTLOADER
 		# As much as I think I would prefer to use systemd on principle
@@ -73,15 +76,15 @@
 		# test this now ...
 
 		# systemd
-		boot.loader.systemd-boot.enable = true;
-		boot.loader.efi.canTouchEfiVariables = true;
-		boot.loader.systemd-boot.memtest86.enable = true;
+		# boot.loader.systemd-boot.enable = true;
+		# boot.loader.efi.canTouchEfiVariables = true;
+		# boot.loader.systemd-boot.memtest86.enable = true;
 
 		# grub
-		# boot.loader.grub.enable = true;
-		# boot.loader.grub.device = "nodev";
-		# boot.loader.grub.efiSupport = true;
-		# boot.loader.grub.efiInstallAsRemovable = true;
+		boot.loader.grub.enable = true;
+		boot.loader.grub.device = "nodev";
+		boot.loader.grub.efiSupport = true;
+		boot.loader.grub.efiInstallAsRemovable = true;
 
 
 		# KERNEL
@@ -114,7 +117,9 @@
 			settings.KbdInteractiveAuthentication = false;
 			settings.PermitRootLogin = "no";
 		};
-
+		
+	
+		networking.enableIPv6 = false;
 
 		networking.nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
 		
@@ -168,8 +173,8 @@
 			"d /static/u 755 root users"
 			"d /copycat 775 root copycat"  # this will be where our actual system configuration will live in perpetuity
 			"Z /copycat 775 root copycat"
-			"d /copycat/keys 700 root root"
-			"Z /copycat/keys 700 root root"
+#			"d /copycat/keys 750 root copycat"
+			"Z /copycat/keys 750 root copycat"
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
 #			EXAMPLES: 
@@ -208,18 +213,18 @@
 		# and if for some unknown to me at the time of writing reason, that fails, it will be 
 		# possible to make it automatically repair itself completely.
 		# 
-		systemd.services.copycatSafetyCommit = {
-			wantedBy = [ "multi-user.target" ];
-			after = [ "network.target" ];
-			description = "Hits the git one time with a one time commit. .mew";
-			serviceConfig ={
-				WorkingDirectory = "/copycat" ;
-				Type = "oneshot";
-				path = [ pkgs.git ];
-				ExecStart = "/copycat/bin/safety_on_boot.sh"; 
-				RemainAfterExit = "yes";
-			};
-		};
+#		systemd.services.copycatSafetyCommit = {
+#			wantedBy = [ "multi-user.target" ];
+#			after = [ "network.target" ];
+#			description = "Hits the git one time with a one time commit. .mew";
+#			serviceConfig ={
+#				WorkingDirectory = "/copycat" ;
+#				Type = "oneshot";
+#				path = [ pkgs.git ];
+#				ExecStart = "/copycat/bin/safety_on_boot.sh"; 
+#				RemainAfterExit = "yes";
+#			};
+#		};
 
 
 		# SERVICES
@@ -268,8 +273,8 @@
 			
 			# ux
 			rust-motd
-			firefox
-			ungoogled-chromium
+			firefox-unwrapped
+#			ungoogled-chromium
 			dunst
 			wofi
 			foot
@@ -283,6 +288,8 @@
 			keepassxc
 			librewolf
 			spotify
+			thunderbird-unwrapped
+			obsidian
 
 			# misc 
 			zip

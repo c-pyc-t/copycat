@@ -21,35 +21,24 @@
     };
   };
 
-	
-	# where you see nixosConfiguration.copycat most other examples use 'default'
-	# this allows for nixos --flake /mnt/etc/nixos#copycat (or #default in that case)
-	# i changed back to default for here 
+  outputs = { nixpkgs,... }@inputs: {
+    nixosConfigurations = {
 
+      copycat = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs; };
+        modules = [
+          # all this should be automagically generated/handled for us, if we update the config we need to truck these around.
+          ./local_origin/version.nix
+          ./local_origin/hardware-configuration.nix
+          inputs.disko.nixosModules.default
+          ./disko/disk-device.nix
 
-	
-	outputs = {nixpkgs, ...} @ inputs:
-  {
-		# DEFAULT: # nixos-rebuild switch --flake /copycat/cfg#default
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
+          ./default.nix
+        ];
 
-				# vvv ATTENTION HARDWARE BLOCK vvv
-				# this should just be set and forget, forever and ever hopefully...
-				# do not change unless you're changing the fundamental structure intentionally
-				(import ./local_origin/version.nix)
-				(import ./local_origin/hardware-configuration.nix)
-				# ^^^ END HARDWARE BLOCK ^^^
+      };
 
-        inputs.disko.nixosModules.default
-        (import ./disko/disk-device.nix)
-
-        ./default.nix #default
-      ];
     };
-
-		# ADD EXTRA CONFIGURATIONS BELOW - name accordingly!
   };
 
 }
