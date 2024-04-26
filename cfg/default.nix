@@ -114,6 +114,9 @@
 			settings.KbdInteractiveAuthentication = false;
 			settings.PermitRootLogin = "no";
 		};
+
+
+		networking.nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
 		
 		#	AUTOMATIC UPDATES
 		# Scary! lets see how she handles it
@@ -242,6 +245,8 @@
 		programs.zsh.enable = true;
 		programs.steam.enable = true;
 
+
+
 		# Packages
 		# When you can add things with programs.PROGRAM - as there seems to be more support with the way it ties in
 		environment.systemPackages = with pkgs; [
@@ -272,6 +277,21 @@
 
 			# photography stuff
 			rawtherapee
+			darktable
+
+			discord
+			keepassxc
+			librewolf
+			spotify
+
+			# misc 
+			zip
+			unzip
+			
+			# NixOS
+			nom
+			nh
+			
 		];
 
 		# Configuration
