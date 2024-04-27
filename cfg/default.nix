@@ -174,17 +174,20 @@
 			"d /static/u 755 root users"
 
 			# CONSOLE PERMISSIONS
-			"d /static/console 750 root copycat"
-			"d /static/console/keys 750 root copycat"
-			"f /static/console/keys/sys 750 root copycat"
-			"f /static/console/keys/sys/age.key 600 copycat copycat"
-			"f /static/console/keys/sys/ssh_system.key 600 copycat copycat"
-			"f /static/console/keys/sys/ssh_system.key.pub 644 copycat copycat"
+			"d /static/console/copycat 750 root copycat"
+			"d /static/console/copycat/sec 750 root copycat"
+			"f /static/console/copycat/sec/sys 750 root copycat"
+			"f /static/console/copycat/sec/sys/age.key 600 copycat copycat"
+			"f /static/console/copycat/sec/sys/ssh_system.key 600 copycat copycat"
+			"f /static/console/copycat/sec/sys/ssh_system.key.pub 644 copycat copycat"
 
 			# NIXOS CONFIGURATION PERMISSIONS
 			"d /copycat 775 copycat copycat"  # this will be where our actual system configuration will live in perpetuity
 			"H /copycat 775 copycat copycat"
-			"d /static/copycat 775 copycat copycat" # this is where our hardware and version nix files will live (and our initial configuration.nix)
+			"d /static/console/copycat/cfg 775 copycat copycat" # this is where our hardware and version nix files will live (and our initial configuration.nix)
+
+			# /copycat = our actual nixos build 
+			# /static/console/copycat = our current system specific stuff that doesn't need to be saved between machines
 
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
