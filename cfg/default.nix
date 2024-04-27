@@ -312,11 +312,13 @@
 			bat
 			nvimpager
 			libsForQt5.kcharselect
+			mpv
+			whatsapp-for-linux
 		];
 		
-		environment.systemPackages = [
-			(import ./scripts/my-test-script.nix { inherit pkgs; })
-		];
+#		environment.systemPackages = [
+#			(import ./scripts/my-test-script.nix { inherit pkgs; })
+#		];
 
 		# Configuration
 		# Programs
