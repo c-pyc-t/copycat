@@ -299,6 +299,7 @@
 			spotify
 			thunderbird
 			obsidian
+			libsForQt5.ktorrent
 
 			# misc 
 			zip
@@ -311,6 +312,10 @@
 			bat
 			nvimpager
 			libsForQt5.kcharselect
+		];
+		
+		environment.systemPackages = [
+			(import ./scripts/my-test-script.nix { inherit pkgs; })
 		];
 
 		# Configuration
