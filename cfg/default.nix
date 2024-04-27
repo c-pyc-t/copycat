@@ -184,6 +184,7 @@
 			# NIXOS CONFIGURATION PERMISSIONS
 			"d /copycat 775 copycat copycat"  # this will be where our actual system configuration will live in perpetuity
 			"H /copycat 775 copycat copycat"
+			"d /static/copycat 775 copycat copycat" # this is where our hardware and version nix files will live (and our initial configuration.nix)
 
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
