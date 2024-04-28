@@ -33,10 +33,10 @@
         specialArgs = {inherit inputs; };
         modules = [
           # all this should be automagically generated/handled for us, if we update the config we need to truck these around.
-          ./local_origin/lapcat/version.nix
-          ./local_origin/lapcat/hardware-configuration.nix
+          ./local_origin/host/lapcat/hardware-configuration.nix
           inputs.disko.nixosModules.default
-          ./local_origin/lapcat/disk-device.nix
+          ./local_origin/host/lapcat/disk-device.nix
+          ./local_origin/host/lapcat/configuration.nix
 
           ./default.nix
         ];
