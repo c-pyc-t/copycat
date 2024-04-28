@@ -263,6 +263,7 @@
 		programs.zsh.enable = true;
 		programs.steam.enable = true;
 
+		powerManagement.powertop.enable = true;
 
 
 		# Packages
@@ -321,7 +322,29 @@
 			whatsapp-for-linux
 			ungoogled-chromium
 			qemu
+#			virt-manager-qt
+			virt-manager
+			virt-viewer
+			vde2 
+			bridge-utils
+			netcat-openbsd
+			ebtables 
+			iptables 
+			libguestfs
+			dnsmasq
+			powertop
 		];
+		hardware.enableRedistributableFirmware = lib.mkDefault true;
+		virtualisation.libvirtd = {
+			enable = true;
+			qemu = {
+				package = pkgs.qemu_kvm;
+				runAsRoot = true;
+				swtpm.enable = true;
+				ovmf = {
+				};
+			};
+		};
 		
 #		environment.systemPackages = [
 #			(import ./scripts/my-test-script.nix { inherit pkgs; })
@@ -331,7 +354,9 @@
 		# Programs
 		users.defaultUserShell = pkgs.bash;
 
-
+#		security.tpm2.enable = true;
+#		security.tpm2.pkcs11.enable = true;  # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
+#		security.tpm2.tctiEnvironment.enable = true;  # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
 
 		# USER SETUP
 		users.users."drgn" = {
@@ -340,7 +365,7 @@
 			description = "I'm a bad girl, but a good story where I go. I've nothing in my pockets but everything to show.";
 			shell = pkgs.zsh;
 			initialPassword = ''\'';
-			extraGroups = [ "wheel" "networkmanager" "copycat" ];
+			extraGroups = [ "wheel" "networkmanager" "copycat" "tss" ];
 			# packages = with pkgs; [
 			# ];
 		};
