@@ -365,7 +365,7 @@
 			description = "I'm a bad girl, but a good story where I go. I've nothing in my pockets but everything to show.";
 			shell = pkgs.zsh;
 			initialPassword = ''\'';
-			extraGroups = [ "wheel" "networkmanager" "copycat" "tss" ];
+			extraGroups = [ "wheel" "networkmanager" "copycat" ];
 			# packages = with pkgs; [
 			# ];
 		};

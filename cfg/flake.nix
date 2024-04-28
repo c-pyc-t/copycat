@@ -29,7 +29,7 @@
   outputs = { nixpkgs,... }@inputs: {
     nixosConfigurations = {
 
-      copycat = nixpkgs.lib.nixosSystem {
+      lapcat = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [
           # all this should be automagically generated/handled for us, if we update the config we need to truck these around.
