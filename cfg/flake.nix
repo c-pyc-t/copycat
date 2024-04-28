@@ -36,7 +36,7 @@
           ./local_origin/host/lapcat/hardware-configuration.nix
           inputs.disko.nixosModules.default
           ./local_origin/host/lapcat/disk-device.nix
-          ./local_origin/host/lapcat/configuration.nix
+          ./local_origin/host/lapcat/configuration.nix  # this is where we put our hostname to keep it out of the general configuration, while keeping everything that needs to stay off git off git.
 
           ./default.nix
         ];
