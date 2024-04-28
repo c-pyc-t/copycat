@@ -97,7 +97,7 @@
 
 
 		# NETWORKING
-		networking.hostName = "copycat";
+#		networking.hostName = "copycat";
 		# This left here as an example of including more hosts entries and firewall rules 
 		# networking.extraHosts = ''
 		# 	127.0.0.2 other-localhost 
@@ -318,6 +318,7 @@
 			libsForQt5.kcharselect
 			mpv
 			whatsapp-for-linux
+			ungoogled-chromium
 		];
 		
 #		environment.systemPackages = [
