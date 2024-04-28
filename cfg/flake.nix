@@ -24,24 +24,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-
-  outputs = { nixpkgs, config, ... }@inputs: {
-
+  outputs = { nixpkgs,... }@inputs: {
     nixosConfigurations = {
 
-# configuration name must = hostname
-
-      lapcat = nixpkgs.lib.nixosSystem {
+      copycat = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs; };
         modules = [
           # all this should be automagically generated/handled for us, if we update the config we need to truck these around.
           ./local_origin/lapcat/version.nix
           ./local_origin/lapcat/hardware-configuration.nix
           inputs.disko.nixosModules.default
-          ./disko/disk-device.nix
+          ./local_origin/lapcat/disk-device.nix
 
           ./default.nix
         ];
