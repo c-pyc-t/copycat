@@ -48,7 +48,6 @@
 # the most important thing to be very VERY CAREFUL of is, do not let this balloon, it can be very
 # difficult to untether a bunch of interlinking config files - so having this 'plan' to stick to means 
 # we hopefully avoid that in the future but still allow for extensibility.
-# 
 
 { pkgs, lib, inputs, ... }:
 
@@ -323,7 +322,6 @@
 			whatsapp-for-linux
 			ungoogled-chromium
 			qemu
-#			virt-manager-qt
 			virt-manager
 			virt-viewer
 			vde2 
