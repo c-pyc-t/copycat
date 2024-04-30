@@ -183,7 +183,7 @@
 
 			# NIXOS CONFIGURATION PERMISSIONS
 			"d /copycat 775 copycat copycat"  # this will be where our actual system configuration will live in perpetuity
-			"H /copycat 775 copycat copycat"
+			"Z /copycat 775 copycat copycat"
 
 			# /copycat = our actual nixos build 
 			# /static/console/copycat = our current system specific stuff that doesn't need to be saved between machines
