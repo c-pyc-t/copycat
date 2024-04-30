@@ -195,6 +195,7 @@
 #			"d /static/data 755 drgn users"
 #			"d /static/transient 777 drgn users 1d" # conceptually use this for downloading rando source for compliation and testing etc
 
+		#
 		# SYSTEM PACKAGES
 		# Allow unfree packages 
 		nixpkgs.config.allowUnfree = true;
@@ -333,6 +334,7 @@
 			libguestfs
 			dnsmasq
 			powertop
+			zellij
 		];
 		hardware.enableRedistributableFirmware = lib.mkDefault true;
 		virtualisation.libvirtd = {
