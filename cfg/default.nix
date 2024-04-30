@@ -7,10 +7,7 @@
 	imports = 
 		[
 			# --v-- ./flake.nix --v--
-			# -+v+- ./configuration.nix -+v+- 
 			# ./base/_origin-version.nix					# < --- all these moved to flake.nix
-			# ./base/hardware-configuration.nix 
-			# -+^+- ./configuration.nix -+^+-
 			# ...
 		];
 
