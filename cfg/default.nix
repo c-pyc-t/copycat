@@ -230,6 +230,7 @@
 			age   # while a bit surface level, it's great for brushing up on knowledges
 			pinentry
 			sshfs
+			gimp
 			
 			# ux
 			rust-motd
