@@ -229,6 +229,7 @@
 			sops  # https://blog.gitguardian.com/a-comprehensive-guide-to-sops/
 			age   # while a bit surface level, it's great for brushing up on knowledges
 			pinentry
+			sshfs
 			
 			# ux
 			rust-motd
