@@ -281,6 +281,7 @@
 			zellij
 			fzf
 			tmux
+			nerdfonts
 		];
 		environment.interactiveShellInit = ''
 			alias vim='nvim'
