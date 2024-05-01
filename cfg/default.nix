@@ -279,6 +279,7 @@
 			dnsmasq
 			powertop
 			zellij
+			fzf
 		];
 		environment.interactiveShellInit = ''
 			alias vim='nvim'
