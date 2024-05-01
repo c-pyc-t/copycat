@@ -280,6 +280,7 @@
 			powertop
 			zellij
 			fzf
+			tmux
 		];
 		environment.interactiveShellInit = ''
 			alias vim='nvim'
