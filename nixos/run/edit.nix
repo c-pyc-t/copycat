@@ -3,7 +3,7 @@
 TIMESTAMP=$(date --rfc-3339=ns)
 
 cd /copycat
-vim /copycat/cfg/default.nix
+vim /copycat/nixos/default.nix
 
 git add -A
 
@@ -11,7 +11,7 @@ RESULT="fail"
 nh os switch
 [[ $? -eq 0 ]] && RESULT="pass"
 
-GENERATIONS=$(nixos-rebuild --flake /copycat/cfg#copycat list-generations)
+GENERATIONS=$(nixos-rebuild --flake /copycat/nixos#copycat list-generations)
 
 COMMIT_MSG=$(cat <<- EOF
  .copycat. [$RESULT] [$TIMESTAMP]
