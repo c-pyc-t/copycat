@@ -15,7 +15,7 @@
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 		environment.sessionVariables = {
-			FLAKE = "/copycat/cfg";
+			FLAKE = "/copycat/nixos";
 		};
 
 		# BOOTLOADER
