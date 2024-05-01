@@ -289,7 +289,7 @@
 			alias neovim='nvim'
 		'';
 		writeShellApplication {
-		}
+		};
 		hardware.enableRedistributableFirmware = lib.mkDefault true;
 		virtualisation.libvirtd = {
 			enable = true;
