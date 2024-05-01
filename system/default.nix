@@ -289,6 +289,7 @@
 			alias neovim='nvim'
 		'';
 
+		{ lib, stdenv, cowsay, writeShellApplication }:
 		writeShellApplication {
   name = "show-nixos-org";
 
