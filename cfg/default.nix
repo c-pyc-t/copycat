@@ -217,7 +217,6 @@
 
 			# system
 			bash
-			vim
 			neovim
 			git
 			alejandra
@@ -281,6 +280,12 @@
 			powertop
 			zellij
 		];
+		environment.interactiveShellInit = ''
+			alias vim='nvim'
+			alias vi='nvim'
+			alias nv='nvim'
+			alias neovim='nvim'
+		'';
 		hardware.enableRedistributableFirmware = lib.mkDefault true;
 		virtualisation.libvirtd = {
 			enable = true;
