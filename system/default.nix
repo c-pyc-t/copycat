@@ -289,16 +289,6 @@
 			alias neovim='nvim'
 		'';
 
-		{ lib, stdenv, cowsay, writeShellApplication }:
-		writeShellApplication {
-  name = "show-nixos-org";
-
-  runtimeInputs = [ curl w3m ];
-
-  text = ''
-    curl -s 'https://nixos.org' | w3m -dump -T text/html
-  '';
-}
 
 		hardware.enableRedistributableFirmware = lib.mkDefault true;
 		virtualisation.libvirtd = {
