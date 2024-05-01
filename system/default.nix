@@ -317,7 +317,7 @@
 			isNormalUser = true;
 			home = "/static/u/drgn"; # make absolutely sure not to have a trailing slash on HOME dirs
 			description = "I'm a bad girl, but a good story where I go. I've nothing in my pockets but everything to show.";
-			shell = pkgs.zsh;
+			shell = pkgs.bash;
 			initialPassword = ''\'';
 			extraGroups = [ "wheel" "networkmanager" "copycat" ];
 			# packages = with pkgs; [
