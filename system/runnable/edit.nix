@@ -3,7 +3,7 @@
 TIMESTAMP=$(date --rfc-3339=ns)
 
 cd /copycat
-vim /copycat/nixos/default.nix
+nvim /copycat/nixos/default.nix
 
 git add -A
 
