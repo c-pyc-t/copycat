@@ -151,6 +151,13 @@
 			#programs here, NOT in environment.systemPackages
 		];
 
+
+		hardware.opengl = {
+			enable = true;
+			driSupport = true;
+			driSupport32bit = true;
+		};
+
 		programs.hyprland.enable = true;
 #		programs.hyprland.package = inputs.hyprland.package."${pkgs.system}".hyprland; # apparently this is better but it doesnt work for me yet? typo?
 
@@ -207,6 +214,7 @@
 		# Programs
 		programs.zsh.enable = true;
 		programs.steam.enable = true;
+		
 
 		powerManagement.powertop.enable = true;
 
