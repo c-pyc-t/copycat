@@ -154,8 +154,8 @@
 
 		hardware.opengl = {
 			enable = true;
-#			driSupport = true;
-#			driSupport32bit = true;
+			driSupport = true;
+			driSupport32Bit = true;
 		};
 
 		programs.hyprland.enable = true;
