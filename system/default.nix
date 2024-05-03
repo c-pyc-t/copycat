@@ -272,6 +272,7 @@
 			nvimpager
 			libsForQt5.kcharselect
 			libsForQt5.kcalc
+			libsForQt5.kde-gtk-config
 			mpv
 			whatsapp-for-linux
 			ungoogled-chromium
