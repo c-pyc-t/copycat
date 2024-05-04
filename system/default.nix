@@ -292,6 +292,7 @@
 			tmux
 			nerdfonts
 			oh-my-posh
+			hydrus
 		];
 		environment.interactiveShellInit = ''
 			alias vim='nvim'
