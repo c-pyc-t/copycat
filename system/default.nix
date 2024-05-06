@@ -300,7 +300,7 @@
 			alias neovim='nvim'
 		'';
 
-		writeShellApplication {
+		pkgs.writeShellApplication {
 			name = "this-is-a-test";
 			runtimeInputs = [ echo ];
 			text = ''
