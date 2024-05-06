@@ -292,26 +292,32 @@
 			oh-my-posh
 			vlc
 		
-		(writeShellScriptBin "nix-edit" ''
+		(writeShellScriptBin "copycat-edit" ''
 #!/run/current-system/sw/bin/env /run/current-system/sw/bin/bash
 
-TIMESTAMP=$(date --rfc-3339=ns)
+timestamp=$(date --rfc-3339=ns)
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find /copycat -mindepth 1 -maxdepth 1 -type d -prune -o -name '.git' | fzf)
+fi
 
 cd /copycat
 nvim /copycat/system/default.nix
 
 git add -A
 
-RESULT="fail"
+result="fail"
 nh os switch
-[[ $? -eq 0 ]] && RESULT="pass"
+[[ $? -eq 0 ]] && result="pass"
 
-GENERATIONS=$(nixos-rebuild --flake /copycat/system#$(hostname) list-generations)
+generations=$(nixos-rebuild --flake /copycat/system#$(hostname) list-generations)
 
-COMMIT_MSG=$(cat <<- EOF
- copycat@$(hostname) [$RESULT] [$TIMESTAMP]
+commit-msg=$(cat <<- EOF
+ copycat@$(hostname) [$result] [$timestamp]
 
-$GENERATIONS
+$generations
 
     へ
 （• ˕ •マ
@@ -319,7 +325,7 @@ $GENERATIONS
 EOF
 
 )
-git commit -m "$COMMIT_MSG"
+git commit -m "$commit-msg"
 sudo git push
 	        '')
 		];
