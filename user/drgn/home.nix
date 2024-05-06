@@ -73,10 +73,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-#  programs.nh = {
-#    enable = true;
-#    clean.enable = true;
-#    clean.extraArgs = "--keep-since 14d --keep 10";
-#    flake = "/copycat/user/drgn";
-#  };
 }

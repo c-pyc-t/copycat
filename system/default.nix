@@ -15,7 +15,7 @@
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 		environment.sessionVariables = {
-			FLAKE = "/copycat/system";
+			FLAKE = "/copycat/system:/copycat/user/drgn";
 		};
 
 		# BOOTLOADER
@@ -214,6 +214,8 @@
 		# Programs
 		programs.zsh.enable = true;
 		programs.steam.enable = true;
+		programs.nh.enable = true;
+		programs.nh.clean.enable = true;
 		
 
 		powerManagement.powertop.enable = true;
@@ -265,7 +267,6 @@
 			
 			# NixOS
 			nom
-			nh
 			
 			bat
 			nvimpager
