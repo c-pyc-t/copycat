@@ -21,7 +21,7 @@
   };
 
   outputs = { nixpkgs, ... }@inputs: {
-    nixosConfigurations.lapcat = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
         inputs.disko.nixosModules.default
