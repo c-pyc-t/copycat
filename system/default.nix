@@ -242,7 +242,6 @@
 			# ux
 			rust-motd
 			firefox
-#			ungoogled-chromium
 			dunst
 			wofi
 			foot
@@ -275,7 +274,6 @@
 			libsForQt5.kde-gtk-config
 			mpv
 			whatsapp-for-linux
-			ungoogled-chromium
 			qemu
 			virt-manager
 			virt-viewer
