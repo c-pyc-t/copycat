@@ -291,6 +291,9 @@
 			nerdfonts
 			oh-my-posh
 			vlc
+			            (writeShellScriptBin "say-hello" ''
+                echo "hello world!"
+            '')
 		];
 
 		environment.interactiveShellInit = ''
@@ -300,11 +303,6 @@
 			alias neovim='nvim'
 		'';
 
-		environment.writeShellApplicationBin "this-is-a-test" {
-			''
-				${uutils-coreutils-noprefix}/bin/echo "im testing so hard"
-			'';
-		};
 
 		hardware.enableRedistributableFirmware = lib.mkDefault true;
 		virtualisation.libvirtd = {
