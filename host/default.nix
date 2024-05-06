@@ -246,7 +246,8 @@
 			firefox
 			dunst
 			wofi
-			foot
+#			foot	# foot shelved infavour of wez
+			wezterm
 			yambar # look into foot and yambar more seriously, seem like great projects.
 
 			# photography stuff
