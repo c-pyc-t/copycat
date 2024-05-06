@@ -28,10 +28,10 @@
         ./host/lapcat/hardware-configuration.nix
         ./host/lapcat/configuration.nix
         ./default.nix # temp - change to system configuration?
-	./nixosModules
+#	./nixosModules
       ];
     };
 
-    homeManagerModules.default = ./homeManagerModules;
+ #   homeManagerModules.default = ./homeManagerModules;
   };
 }
