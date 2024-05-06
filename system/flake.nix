@@ -68,7 +68,7 @@
         modules = [
           # > Our main nixos configuration file <
           ./host/lapcat/default.nix
-	  ./default.nix
+	  ./host/default.nix
         ];
       };
     };
