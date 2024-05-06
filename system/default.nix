@@ -300,7 +300,7 @@ timestamp=$(date --rfc-3339=ns)
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /copycat -mindepth 1 -type d -prune -o -name '.git' | fzf)
+    selected=$(find /copycat -iname '*.nix' -mindepth 1 -type f | fzf)
 fi
 
 cd /copycat
@@ -314,7 +314,7 @@ nh os switch
 
 generations=$(nixos-rebuild --flake /copycat/system#$(hostname) list-generations)
 
-commit-msg=$(cat <<- EOF
+commit_msg=$(cat <<- EOF
  copycat@$(hostname) [$result] [$timestamp]
 
 $generations
@@ -325,7 +325,7 @@ $generations
 EOF
 
 )
-git commit -m "$commit-msg"
+git commit -m "$commit_msg"
 sudo git push
 	        '')
 		];
