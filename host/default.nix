@@ -299,6 +299,7 @@
 		(writeShellScriptBin "copycat-edit" ''
 #!/run/current-system/sw/bin/env /run/current-system/sw/bin/bash
 
+export FLAKE=/copycat
 timestamp=$(date --rfc-3339=ns)
 
 if [[ $# -eq 1 ]]; then
