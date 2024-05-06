@@ -24,6 +24,7 @@
     nixosConfigurations.lapcat = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
+        inputs.disko.nixosModules.default
         ./host/lapcat/disk-device.nix
         ./host/lapcat/hardware-configuration.nix
         ./host/lapcat/configuration.nix
