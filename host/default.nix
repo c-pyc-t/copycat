@@ -225,6 +225,11 @@
 
 		powerManagement.powertop.enable = true;
 
+		hardware.opengl.driSupport = true; # This is already enabled by default
+		hardware.opengl.driSupport32Bit = true; # For 32 bit applications
+		hardware.opengl.extraPackages = with pkgs; [
+		  rocmPackages.clr.icd
+		];
 
 		# Packages
 		# When you can add things with programs.PROGRAM - as there seems to be more support with the way it ties in
