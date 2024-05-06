@@ -300,11 +300,9 @@
 			alias neovim='nvim'
 		'';
 
-		writeShellApplication {
-			name = "this-is-a-test";
-			runtimeInputs = [ echo ];
-			text = ''
-				echo "im testing so hard"
+		writeShellApplicationBin "this-is-a-test" {
+			''
+				${uutils-coreutils-noprefix}/bin/echo "im testing so hard"
 			'';
 		}
 
