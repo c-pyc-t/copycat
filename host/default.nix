@@ -34,6 +34,7 @@
 		# KERNEL
 		boot.kernelPackages = pkgs.linuxPackages_zen;
 
+		hardware.cpu.amd.updateMicrocode = true;
 
 		# LOCALE/LOCALIZATION
 		time.timeZone = "Pacific/Auckland";
