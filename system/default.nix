@@ -291,9 +291,10 @@
 			nerdfonts
 			oh-my-posh
 			vlc
-			            (writeShellScriptBin "say-hello" ''
-                echo "hello world!"
-            '')
+		
+		(writeShellScriptBin "say-hello" ''
+                	echo "hello world!"
+	        '')
 		];
 
 		environment.interactiveShellInit = ''
