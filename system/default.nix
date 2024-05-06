@@ -303,6 +303,10 @@ else
     selected=$(find /copycat -iname '*.nix' -mindepth 1 -type f | fzf)
 fi
 
+echo "---"
+echo SELECTED: $selected
+echo "---"
+
 cd /copycat
 nvim /copycat/system/default.nix
 
