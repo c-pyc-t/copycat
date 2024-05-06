@@ -303,7 +303,7 @@ nvim /copycat/system/default.nix
 git add -A
 
 RESULT="fail"
-nh os switch --ask
+nh os switch
 [[ $? -eq 0 ]] && RESULT="pass"
 
 GENERATIONS=$(nixos-rebuild --flake /copycat/system#$(hostname) list-generations)
