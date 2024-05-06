@@ -301,15 +301,11 @@ timestamp=$(date --rfc-3339=ns)
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /copycat -type f -not -path '/copycat/.git' | fzf)
+    selected=$(find /copycat -mindepth 0 -not -path "*/.git/*" -not -name ".git" | fzf)
 fi
 
-echo "---"
-echo SELECTED: $selected
-echo "---"
-
 cd /copycat
-nvim /copycat/system/default.nix
+nvim $selected
 
 git add -A
 
