@@ -300,7 +300,7 @@ timestamp=$(date --rfc-3339=ns)
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /copycat -mindepth 1 -type f -prune -o -name '.git' | fzf)
+    selected=$(find /copycat -mindepth 1 -type d -prune -o -name '.git' | fzf)
 fi
 
 cd /copycat
