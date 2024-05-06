@@ -1,7 +1,7 @@
 # default.nix
 # @drgn
 
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, runtimeInputs, ... }:
 
 {
 	imports = 
