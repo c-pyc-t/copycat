@@ -34,6 +34,7 @@
 		# KERNEL
 		boot.kernelPackages = pkgs.linuxPackages_zen;
 
+		boot.initrd.kernelModules = [ "amdgpu" ];
 		hardware.cpu.amd.updateMicrocode = true;
 
 		# LOCALE/LOCALIZATION
@@ -195,6 +196,7 @@
 		# SERVICES
 
 		services.xserver.enable = true;
+		services.xserver.videoDrivers = [ "amdgpu" ];
 		services.displayManager.sddm.enable = true;
 		services.displayManager.sddm.wayland.enable = true;
 		services.desktopManager.plasma6.enable = true; # this is running off unstable currently apparently 
