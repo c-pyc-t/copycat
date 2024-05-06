@@ -304,7 +304,7 @@
 			''
 				${uutils-coreutils-noprefix}/bin/echo "im testing so hard"
 			'';
-		}
+		};
 
 		hardware.enableRedistributableFirmware = lib.mkDefault true;
 		virtualisation.libvirtd = {
