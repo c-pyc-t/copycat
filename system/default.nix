@@ -241,7 +241,7 @@
 			
 			# ux
 			rust-motd
-			firefox-unwrapped
+			firefox
 			dunst
 			wofi
 			foot
