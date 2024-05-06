@@ -291,6 +291,7 @@
 			nerdfonts
 			oh-my-posh
 			vlc
+			ffmpeg_7-full
 		
 		(writeShellScriptBin "copycat-edit" ''
 #!/run/current-system/sw/bin/env /run/current-system/sw/bin/bash
