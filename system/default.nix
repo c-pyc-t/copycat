@@ -292,6 +292,7 @@
 			oh-my-posh
 			vlc
 		];
+
 		environment.interactiveShellInit = ''
 			alias vim='nvim'
 			alias vi='nvim'
@@ -299,6 +300,13 @@
 			alias neovim='nvim'
 		'';
 
+		writeShellApplication {
+			name = "this-is-a-test";
+			runtimeInputs = [ echo ];
+			text = ''
+				echo "im testing so hard"
+			'';
+		}
 
 		hardware.enableRedistributableFirmware = lib.mkDefault true;
 		virtualisation.libvirtd = {
@@ -312,9 +320,6 @@
 			};
 		};
 		
-#		environment.systemPackages = [
-#			(import ./scripts/my-test-script.nix { inherit pkgs; })
-#		];
 
 		# Configuration
 		# Programs
