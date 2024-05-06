@@ -305,6 +305,7 @@
 			vlc
 			ffmpeg_7-full
 			gettext
+			microcodeAmd
 
 		(writeShellScriptBin "copycat-edit" ''
 #!/run/current-system/sw/bin/env /run/current-system/sw/bin/bash
