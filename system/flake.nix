@@ -2,19 +2,12 @@
 #
 # description: flake.nix file
 # @drgn
-# Flakes is a feature of managing Nix packages to simplify usability and improve reproducibility of Nix installations. Flakes manages dependencies between Nix expressions, which are the primary protocols for specifying packages. Flakes implements these protocols in a consistent schema with a common set of policies for managing packages.
 #   https://nixos.wiki/wiki/Flakes
-#
-# flakes let you modulate and create seperate configs more easily
-# this was going to be the 'copycat' configuration but a default is required.
-# for now, this is the default
-# 
 {
-  description = "NixOS config";
+  description = "copycat";
      
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     disko = {
       url = "github:nix-community/disko";
@@ -27,47 +20,18 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations = {
-
-      old_lapcat = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs; };
-        modules = [
-          # all this should be automagically generated/handled for us, if we update the config we need to truck these around.
-          ./local_origin/host/lapcat/hardware-configuration.nix
-          inputs.disko.nixosModules.default
-          ./local_origin/host/lapcat/disk-device.nix
-          ./local_origin/host/lapcat/configuration.nix  # this is where we put our hostname to keep it out of the general configuration, while keeping everything that needs to stay off git off git.
-
-          ./default.nix
-        ];
-
-      };
-
-      lapcat = nixpkgs.lib.nixosSystem {
-	system = "x86_64-linux";
-
-        specialArgs = {inherit inputs; }; 
-
-	modules = [
-          ./local_origin/host/lapcat/hardware-configuration.nix
-          inputs.disko.nixosModules.default
-          ./local_origin/host/lapcat/disk-device.nix
-          ./local_origin/host/lapcat/configuration.nix  # this is where we put our hostname to keep it out of the general configuration, while keeping everything that needs to stay off git off git.
-	  
-          ./default.nix
-	  home-manager.nixosModules.home-manager
-	  {
-	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.users."drgn" = import ./drgn.nix;
-	  }
-
-	];
-
-      };
-
+  outputs = { nixpkgs, ... }@inputs: {
+    nixosConfigurations.lapcat = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./host/lapcat/disk-device.nix
+        ./host/lapcat/hardware-configuration.nix
+        ./host/lapcat/configuration.nix
+        ./default.nix # temp - change to system configuration?
+	./nixosModules
+      ];
     };
-  };
 
+    homeManagerModules.default = ./homeManagerModules;
+  };
 }
