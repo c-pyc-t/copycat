@@ -300,7 +300,7 @@
 			alias neovim='nvim'
 		'';
 
-		writeShellApplicationBin "this-is-a-test" {
+		environment.writeShellApplicationBin "this-is-a-test" {
 			''
 				${uutils-coreutils-noprefix}/bin/echo "im testing so hard"
 			'';
