@@ -8,7 +8,7 @@
   description = "copycat";
     inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # i need to swap this back to nixos-23.11 from nixos-unstable once i figure out how to separate plasma/kde
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -82,7 +82,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
-#          ./home-manager/home.nix
+          ./home-manager/drgn.nix
         ];
       };
     };
