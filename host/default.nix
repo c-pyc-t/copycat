@@ -134,6 +134,9 @@
 			# /copycat = our actual nixos build 
 			# /static/console/copycat = our current system specific stuff that doesn't need to be saved between machines
 
+			# HIP - AMD SHIT?
+			"L+ /opt/rocm/hip - - - - ${pkgs.rocmPackages.clr}"
+
 		];
 #			DO NOT ADD UNLESS YOU'RE ACTIVELY USING SHIT, BE EXPLICIT, BE PURPOSEFUL
 #			EXAMPLES: 
