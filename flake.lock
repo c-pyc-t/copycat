@@ -57,7 +57,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable-23_11": {
+    "nixpkgs-stable": {
       "locked": {
         "lastModified": 1714971268,
         "narHash": "sha256-IKwMSwHj9+ec660l+I4tki/1NRoeGpyA2GdtdYpAgEw=",
@@ -94,7 +94,7 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable-23_11": "nixpkgs-stable-23_11",
+        "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }

@@ -6,7 +6,7 @@
   lib, 
   inputs, 
   runtimeInputs, 
-  stable-23_11 ? import <nixpkgs-stable-23_11> {}, # mine
+  nixpkgs-stable ? import <nixpkgs-stable> {}, # mine
   ... 
 }:
 
