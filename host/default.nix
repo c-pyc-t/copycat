@@ -164,6 +164,7 @@
 #		};
 		hardware.opengl.enable = true;
 
+		programs.xwayland.enable = true;
 		programs.hyprland.enable = true;
 #		programs.hyprland.package = inputs.hyprland.package."${pkgs.system}".hyprland; # apparently this is better but it doesnt work for me yet? typo?
 
@@ -202,6 +203,7 @@
 
 		services.xserver.enable = true;
 		services.xserver.videoDrivers = [ "amdgpu" ];
+		services.xserver.displayManager.sddm.wayland.enable = true;
 		services.displayManager.sddm.enable = true;
 		services.displayManager.sddm.wayland.enable = true;
 		services.desktopManager.plasma6.enable = true; # this is running off unstable currently apparently 
