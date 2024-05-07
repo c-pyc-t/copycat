@@ -1,7 +1,14 @@
 # default.nix
 # @drgn
 
-{ pkgs, lib, inputs, runtimeInputs, unstable ? import <nixpkgs-unstable> {}, ... }:
+{ 
+  pkgs, 
+  lib, 
+  inputs, 
+  runtimeInputs, 
+  stable-23_11 ? import <nixpkgs-stable-23_11> {}, # mine
+  ... 
+}:
 
 
 {
