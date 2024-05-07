@@ -222,7 +222,7 @@
 		programs.nh.enable = true;
 		programs.nh.clean.enable = true;
 		
-
+		# powermanagement will need looking into... the default autotunes cause some pretty shoddy performance
 #		powerManagement.powertop.enable = true; # tunables cause USB dropout annoyingly ... might need to customize.
 #		powerManagement.cpuFreqGovernor = "ondemand";
 
