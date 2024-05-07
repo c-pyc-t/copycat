@@ -263,6 +263,7 @@
 			wofi
 #			foot	# foot shelved infavour of wez
 			wezterm
+			kitty
 			yambar # look into foot and yambar more seriously, seem like great projects.
 
 			# photography stuff
