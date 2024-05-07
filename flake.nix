@@ -28,6 +28,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable-23_11,
     home-manager,
     ...
   } @ inputs: let
