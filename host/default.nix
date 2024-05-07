@@ -214,9 +214,9 @@
 		programs.steam.gamescopeSession.enable = true;
 		programs.gamescope.enable = true;
 
-		environment.plasma6.excludePackages = with pkgs.kdePackages; [
+#		environment.plasma6.excludePackages = with pkgs.kdePackages; [
 			# just in case
-		];
+#		];
 
 		programs.dconf.enable = true;
 		# doing gnome theming and shit seems like it might be a pita
