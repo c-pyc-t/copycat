@@ -6,7 +6,7 @@
   lib, 
   inputs, 
   runtimeInputs, 
-  stable-23_11 ? import <nixpkgs-stable-23_11> {}, 
+  nixpkgs-stable-23_11 ? import <nixpkgs-stable-23_11> {}, 
   ... 
 }:
 
@@ -278,7 +278,7 @@
 			dunst
 			wofi
 #			foot	# foot shelved infavour of wez
-#			stable-23_11.wezterm
+			nixpkgs-stable-23_11.wezterm
 			wezterm
 			kitty
 			yambar # look into foot and yambar more seriously, seem like great projects.
