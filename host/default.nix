@@ -17,6 +17,7 @@
 		environment.sessionVariables = {
 			FLAKE = "/copycat";
 		};
+		environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 		# BOOTLOADER
 		# systemd - shelved for now
