@@ -1,7 +1,7 @@
 # default.nix
 # @drgn
 
-{ pkgs, lib, inputs, runtimeInputs, ... }:
+{ pkgs, lib, inputs, runtimeInputs, unstable ? import <nixpkgs-unstable> {}, ... }:
 
 
 {
