@@ -81,7 +81,7 @@
       # FIXME replace with your username@hostname
       "drgn@lapcat" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {inherit inputs outputs pkgs-stable-23_11;};
         modules = [
           # > Our main home-manager configuration file <
           ./home-manager/drgn.nix
