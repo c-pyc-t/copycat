@@ -230,7 +230,7 @@
 		programs.steam.enable = true;
 
 # need to be on unstable for this
-		programs.nh.enable = true;
+#		programs.nh.enable = true;
 #		programs.nh.clean.enable = true;
 		
 		# powermanagement will need looking into... the default autotunes cause some pretty shoddy performance
