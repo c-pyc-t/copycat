@@ -12,7 +12,7 @@
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
+    pkgs-stable-23_11.url = "github:nixos/nixpkgs/nixos-23.11";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     disko = {
@@ -28,7 +28,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-stable-23_11,
+    pkgs-stable-23_11,
     home-manager,
     ...
   } @ inputs: let
@@ -81,7 +81,7 @@
       # FIXME replace with your username@hostname
       "drgn@lapcat" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs nixpkgs-stable-23_11;};
+        extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
           ./home-manager/drgn.nix
