@@ -6,7 +6,7 @@
   lib, 
   inputs, 
   runtimeInputs, 
-  nixpkgs-stable-23_11 ? import <nixpkgs-stable-23_11> {}, # mine
+  stable-23_11 ? import <nixpkgs-stable-23_11> {}, # must be set via nix-channel -- investigate better alternatives (prob layers?)
   ... 
 }:
 
