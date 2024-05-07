@@ -278,7 +278,6 @@
 			dunst
 			wofi
 #			foot	# foot shelved infavour of wez
-			nixpkgs-stable-23_11.wezterm
 			wezterm
 			kitty
 			yambar # look into foot and yambar more seriously, seem like great projects.
