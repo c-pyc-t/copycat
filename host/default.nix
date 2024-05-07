@@ -364,6 +364,9 @@ git commit -m "$commit_msg"
 sudo git push
 	        '')
 		];
+		nixpkgs.config.permittedInsecurePackages = [
+                "electron-25.9.0"
+              ];
 
 		environment.interactiveShellInit = ''
 			alias vim='nvim'
