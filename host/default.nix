@@ -317,7 +317,7 @@
 			nerdfonts
 			oh-my-posh
 			vlc
-			ffmpeg_7-full
+			ffmpeg
 			gettext
 			microcodeAmd
 
