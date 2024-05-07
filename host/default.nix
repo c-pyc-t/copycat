@@ -164,7 +164,7 @@
 #		};
 		hardware.opengl.enable = true;
 
-		programs.xwayland.enable = true;
+#		programs.xwayland.enable = true;
 		programs.hyprland.enable = true;
 #		programs.hyprland.package = inputs.hyprland.package."${pkgs.system}".hyprland; # apparently this is better but it doesnt work for me yet? typo?
 
