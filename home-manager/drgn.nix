@@ -6,6 +6,7 @@
   lib,
   config,
   pkgs,
+  nixpkgs-stable-23_11,
   ...
 }: {
   # You can import other home-manager modules here
