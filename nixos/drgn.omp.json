@@ -32,18 +32,21 @@
             "always_enabled": true
           },
           "style": "plain",
-          "template": " \ue200  ",
+          "template": "   \ue285 ",
 	  "type": "status"
 	},
         {
           "foreground": "p:color15",
           "properties": {
-            "folder_icon": "\uf07b",
-            "folder_separator_icon": " \ua718 ",
-            "home_icon": "<p:color7>\ueef8 </> ",
+	    "folder_icon": " \uf07b ",
+            "folder_separator_icon": "<p:color0>  </>",
+            "home_icon": "<p:color0>\ueef8 </> ",
             "style": "full",
 	    "mapped_locations": {
-	      "/copycat": "🐈"
+	      "/": "/",
+	      "/copycat": "<p:color1>copycat</>",
+	      "/static/u/drgn": "<p:color15>\ueef8 </>",
+	      "/static/console": "<p:color1>console</>"
 	    }
           },
           "style": "diamond",
@@ -107,12 +110,12 @@
       "segments": [
         {
 	  "foreground": "p:color1",
-          "foreground_templates": ["{{ if gt .Code 0 }}p:color3{{ end }}"],
+          "foreground_templates": ["{{ if gt .Code 0 }}p:color1{{ end }}"],
           "properties": {
             "always_enabled": true
           },
           "style": "plain",
-          "template": " \ue285  ",
+          "template": "  \ue200  ",
           "type": "status"
         }
       ],
@@ -123,7 +126,7 @@
   "transient_prompt": {
     "background": "transparent",
     "foreground": "#FEF5ED",
-    "template": "\ue285 "
+    "template": "\ue200 "
   },
   "version": 2
 }
