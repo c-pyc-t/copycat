@@ -396,7 +396,7 @@ sudo git push
 
 		# Configuration
 		# Programs
-		users.defaultUserShell = pkgs.bash;
+		users.defaultUserShell = pkgs.zsh;
 
 #		security.tpm2.enable = true;
 #		security.tpm2.pkcs11.enable = true;  # expose /run/current-system/sw/lib/libtpm2_pkcs11.so

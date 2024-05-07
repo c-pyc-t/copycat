@@ -1,0 +1,20 @@
+name: 'drgn dark'
+color_01: '#ffffff' # 
+"#ff0000",
+"#00ff00",
+"#f0f000",
+"#0000ff",
+"#8308ff",
+"#00f0f0",
+"#aaaaaa",
+"#000000",
+"#ff0883",
+"#83ff08",
+"#ff8308",
+"#0883ff",
+"#f000f0",
+"#08ff83",
+"#444444"
+
+foreground": "#e5e5e5",
+background": "#1a1a1a"

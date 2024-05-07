@@ -1,21 +1,53 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "color0": "#1a1a1a", 
+    "color8": "#e5e5e5",
+    "color1": "#ff0883",
+    "color2": "#83ff08",
+    "color3": "#ff8308",
+    "color4": "#0883ff",
+    "color5": "#8308ff",
+    "color6": "#00f0f0",
+    "color7": "#ffffff",
+    "color9": "#ff0000",
+    "color10": "#00ff00",
+    "color11": "#f0f0f0",
+    "color12": "#0000ff",
+    "color13": "#f000f0",
+    "color14": "#08ff83",
+    "color15": "#5e5e5e",
+    "foreground": "#ffffff", 
+    "background": "#000000"
+  },
   "blocks": [
     {
       "alignment": "left",
       "newline": true,
       "segments": [
+	{ 
+	  "foreground": "p:color4",
+          "foreground_templates": ["{{ if gt .Code 0 }}p:color9{{ end }}"],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": " \ue200  ",
+	  "type": "status"
+	},
         {
-          "foreground": "blue",
-          "leading_diamond": " <green>\ue200 </>",
+          "foreground": "p:color15",
           "properties": {
             "folder_icon": "\uf07b",
-            "folder_separator_icon": "/",
-            "home_icon": "home",
-            "style": "agnoster_full"
+            "folder_separator_icon": " \ua718 ",
+            "home_icon": "<p:color7>\ueef8 </> ",
+            "style": "full",
+	    "mapped_locations": {
+	      "/copycat": "🐈"
+	    }
           },
           "style": "diamond",
-          "template": "\ue5ff {{ .Path }} ",
+          "template": "{{ .Path }} ",
           "type": "path"
         },
         {
@@ -63,7 +95,7 @@
         {
           "foreground": "cyan",
           "style": "diamond",
-          "template": " <black>MEM:</> {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB)",
+          "template": " <p:color6>MEM:</> {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB)",
           "type": "sysinfo"
         }
       ],
@@ -74,8 +106,8 @@
       "newline": true,
       "segments": [
         {
-	  "foreground": "blue",
-          "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
+	  "foreground": "p:color1",
+          "foreground_templates": ["{{ if gt .Code 0 }}p:color3{{ end }}"],
           "properties": {
             "always_enabled": true
           },
