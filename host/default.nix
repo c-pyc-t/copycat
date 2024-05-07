@@ -6,7 +6,7 @@
   lib, 
   inputs, 
   runtimeInputs, 
-  nixpkgs-stable-23_11 ? import <nixpkgs-stable-23_11> {}, 
+#  nixpkgs-stable-23_11 ? import <nixpkgs-stable-23_11> {},  # no work sadge
   ... 
 }:
 
@@ -216,15 +216,15 @@
 		services.xserver.videoDrivers = [ "amdgpu" ];
 		services.xserver.displayManager.sddm.wayland.enable = true;
 		services.displayManager.sddm.enable = true;
-#		services.displayManager.sddm.wayland.enable = true;
-#		services.desktopManager.plasma6.enable = true; # this is running off unstable currently apparently 
+		services.displayManager.sddm.wayland.enable = true;
+		services.desktopManager.plasma6.enable = true; # this is running off unstable currently apparently 
 		programs.steam.gamescopeSession.enable = true;
 		programs.gamescope.enable = true;
 
 # need to be on unstable for this
-#		environment.plasma6.excludePackages = with pkgs.kdePackages; [
+		environment.plasma6.excludePackages = with pkgs.kdePackages; [
 			# just in case
-#		];
+		];
 
 		programs.dconf.enable = true;
 		# doing gnome theming and shit seems like it might be a pita
