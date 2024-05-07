@@ -3,6 +3,11 @@
 
 { pkgs, lib, inputs, runtimeInputs, ... }:
 
+let
+  baseconfig = { allowUnfree = true; };
+  unstable = import <nixos-unstable> { config = basconfig; };
+in
+
 {
 	imports = 
 		[
