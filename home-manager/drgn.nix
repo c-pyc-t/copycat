@@ -6,7 +6,6 @@
   lib,
   config,
   pkgs,
-  nixpkgs-stable-23_11,
   ...
 }: {
   # You can import other home-manager modules here
@@ -56,6 +55,7 @@
   # programs.neovim.enable = true;
   home.packages = with pkgs; [ 
     steam 
+    outputs.pkgs-stable-23_11.wezterm
   ];
 
   # Enable home-manager and git
