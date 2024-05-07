@@ -3,10 +3,6 @@
 
 { pkgs, lib, inputs, runtimeInputs, ... }:
 
-let
-  baseconfig = { allowUnfree = true; };
-  unstable = import <nixos-unstable> { config = basconfig; };
-in
 
 {
 	imports = 
@@ -23,6 +19,9 @@ in
 			FLAKE = "/copycat";
 		};
 		environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+#  		baseconfig = { allowUnfree = true; };
+#		unstable = import <nixos-unstable> { config = basconfig; };
 
 		# BOOTLOADER
 		# systemd - shelved for now
