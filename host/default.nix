@@ -243,11 +243,11 @@
 		  rocmPackages.clr.icd
 		];
 
-(
-┃               nixpkgs.config.permittedInsecurePackages = [
-┃                 "electron-25.9.0"
-┃               ];
-)
+
+#┃               nixpkgs.config.permittedInsecurePackages = [
+#┃                 "electron-25.9.0"
+#┃               ];
+
 		# Packages
 		# When you can add things with programs.PROGRAM - as there seems to be more support with the way it ties in
 		environment.systemPackages = with pkgs; [
