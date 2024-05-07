@@ -281,6 +281,7 @@
 			wezterm
 			kitty
 			yambar # look into foot and yambar more seriously, seem like great projects.
+			ripgrep
 
 			# photography stuff
 			darktable
