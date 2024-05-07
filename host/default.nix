@@ -214,6 +214,7 @@
 		programs.steam.gamescopeSession.enable = true;
 		programs.gamescope.enable = true;
 
+# need to be on unstable for this
 #		environment.plasma6.excludePackages = with pkgs.kdePackages; [
 			# just in case
 #		];
@@ -227,8 +228,10 @@
 		# Programs
 		programs.zsh.enable = true;
 		programs.steam.enable = true;
+
+# need to be on unstable for this
 		programs.nh.enable = true;
-		programs.nh.clean.enable = true;
+#		programs.nh.clean.enable = true;
 		
 		# powermanagement will need looking into... the default autotunes cause some pretty shoddy performance
 #		powerManagement.powertop.enable = true; # tunables cause USB dropout annoyingly ... might need to customize.
