@@ -303,6 +303,7 @@
 			libguestfs
 			dnsmasq
 			powertop
+			htop
 			zellij
 			fzf
 			tmux
